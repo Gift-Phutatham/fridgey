@@ -46,4 +46,9 @@ class Product {
         quantity: json[DbFields.quantity] as int,
         unit: json[DbFields.unit] as String,
       );
+
+  @override
+  String toString() {
+    return 'Product(Id: $id, Product name: $productName, Category: $category, Quantity: $quantity, Unit: $unit)';
+  }
 }

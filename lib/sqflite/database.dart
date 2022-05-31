@@ -32,12 +32,12 @@ class FridgeyDb {
         ${DbFields.productName} $textType,
         ${DbFields.category} $textType,
         ${DbFields.quantity} $intType,
-        ${DbFields.unit} $textType,
+        ${DbFields.unit} $textType
       )
     ''');
   }
 
-  Future<int> create(Product product) async {
+  Future<int> createProduct(Product product) async {
     final db = await instance.database;
     return await db.insert(table, product.toJson());
   }
@@ -64,7 +64,7 @@ class FridgeyDb {
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
-  Future<int> update(Product product) async {
+  Future<int> updateProduct(Product product) async {
     final db = await instance.database;
     return db.update(
       table,
@@ -74,7 +74,7 @@ class FridgeyDb {
     );
   }
 
-  Future<int> delete(int id) async {
+  Future<int> deleteProduct(int id) async {
     final db = await instance.database;
     return await db.delete(
       table,
@@ -83,7 +83,7 @@ class FridgeyDb {
     );
   }
 
-  Future close() async {
+  Future closeDb() async {
     final db = await instance.database;
     db.close();
   }
