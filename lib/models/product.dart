@@ -102,7 +102,7 @@ List<Product> products = [
   Product(
     id: 6,
     productName: "productName6",
-    category: categories[6],
+    category: categories[5],
     quantity: 6,
     unit: "unit6",
   ),
