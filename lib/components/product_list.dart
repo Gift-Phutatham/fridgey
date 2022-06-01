@@ -12,21 +12,46 @@ class ProductList extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (item, index) => GestureDetector(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Image(
-              image: AssetImage(getImage(products[index].category)),
-              width: 50,
-              height: 50,
+            Row(
+              children: <Widget>[
+                Image(
+                  image: AssetImage(getImage(products[index].category)),
+                  width: 50,
+                  height: 50,
+                ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      products[index].productName,
+                    ),
+                    Text(
+                      '${products[index].quantity.toString()} ${products[index].unit}',
+                    )
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+              ],
             ),
             Column(
-              children: [
-                Text(products[index].productName),
-                Text(
-                  '${products[index].quantity.toString()} ${products[index].unit}',
-                )
+              children: <Widget>[
+                Row(
+                  children: const [
+                    Image(
+                      image: AssetImage('assets/delete.png'),
+                      width: 10,
+                      height: 10,
+                    ),
+                    Image(
+                      image: AssetImage('assets/update.png'),
+                      width: 10,
+                      height: 10,
+                    ),
+                  ],
+                ),
               ],
-              crossAxisAlignment: CrossAxisAlignment.start,
-            ),
+            )
           ],
         ),
       ),
