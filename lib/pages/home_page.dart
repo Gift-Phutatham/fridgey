@@ -21,7 +21,9 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Categories(),
+      body: Column(children: const <Widget>[
+        Categories(),
+      ]),
     );
   }
 }
