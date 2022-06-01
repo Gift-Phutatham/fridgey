@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'categories.dart';
 import 'constants.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      // body: const Categories(),
+      body: Categories(),
     );
   }
 }
