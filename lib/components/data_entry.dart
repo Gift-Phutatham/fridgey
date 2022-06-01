@@ -14,41 +14,6 @@ class DataEntry extends StatefulWidget {
 class _DataEntryState extends State<DataEntry> {
   final _formKey = GlobalKey<FormState>();
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Form(
-  //     key: _formKey,
-  //     child: Column(
-  //       children: <Widget>[
-  //         Padding(
-  //           padding: const EdgeInsets.all(30.0),
-  //           child: TextFormField(
-  //             decoration: const InputDecoration(
-  //               border: OutlineInputBorder(),
-  //               hintText: 'Enter a product',
-  //             ),
-  //             validator: (String? value) {
-  //               if (value == null || value.isEmpty) {
-  //                 return 'Please enter some text';
-  //               }
-  //               return null;
-  //             },
-  //           ),
-  //         ),
-  //         Padding(
-  //           padding: const EdgeInsets.symmetric(vertical: 16.0),
-  //           child: ElevatedButton(
-  //             onPressed: () {
-  //               if (_formKey.currentState!.validate()) {}
-  //             },
-  //             child: const Text('Create'),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   String? selectedValue;
 
   @override
@@ -81,6 +46,12 @@ class _DataEntryState extends State<DataEntry> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: 30),
               const Text(
@@ -151,6 +122,7 @@ class _DataEntryState extends State<DataEntry> {
                       SizedBox(
                         width: 150,
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 20,
@@ -162,6 +134,12 @@ class _DataEntryState extends State<DataEntry> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                     ],
@@ -169,7 +147,6 @@ class _DataEntryState extends State<DataEntry> {
                   const SizedBox(width: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
                         'Unit',
