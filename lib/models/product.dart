@@ -23,7 +23,7 @@ class Product {
   final int quantity;
   final String unit;
 
-  const Product({
+  Product({
     this.id,
     required this.productName,
     required this.category,
@@ -54,42 +54,42 @@ class Product {
 
   /// Mock data
   List<Product> products = [
-    const Product(
+    Product(
       id: 1,
       productName: "productName1",
       category: "category1",
       quantity: 1,
       unit: "unit1",
     ),
-    const Product(
+    Product(
       id: 2,
       productName: "productName2",
       category: "category2",
       quantity: 2,
       unit: "unit2",
     ),
-    const Product(
+    Product(
       id: 3,
       productName: "productName3",
       category: "category3",
       quantity: 3,
       unit: "unit3",
     ),
-    const Product(
+    Product(
       id: 4,
       productName: "productName4",
       category: "category4",
       quantity: 4,
       unit: "unit4",
     ),
-    const Product(
+    Product(
       id: 5,
       productName: "productName5",
       category: "category5",
       quantity: 5,
       unit: "unit5",
     ),
-    const Product(
+    Product(
       id: 6,
       productName: "productName6",
       category: "category6",
