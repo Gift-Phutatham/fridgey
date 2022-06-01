@@ -55,6 +55,14 @@ class Product {
 
 /// Mock data
 List<String> categories = [
+  "Starch & Grains",
+  "Fruits & Vegetables",
+  "Meat & Fish",
+  "Dairy",
+  "Others",
+];
+
+List<String> allCategories = [
   "All",
   "Starch & Grains",
   "Fruits & Vegetables",
@@ -67,42 +75,42 @@ List<Product> products = [
   Product(
     id: 1,
     productName: "Rice",
-    category: categories[1],
+    category: categories[0],
     quantity: 1,
     unit: "kg",
   ),
   Product(
     id: 2,
     productName: "Apple",
-    category: categories[2],
+    category: categories[1],
     quantity: 2,
     unit: "unit",
   ),
   Product(
     id: 3,
     productName: "Chicken",
-    category: categories[3],
+    category: categories[2],
     quantity: 3,
     unit: "kg",
   ),
   Product(
     id: 4,
     productName: "Cheese",
-    category: categories[4],
+    category: categories[3],
     quantity: 4,
     unit: "mg",
   ),
   Product(
     id: 5,
     productName: "Beer",
-    category: categories[5],
+    category: categories[4],
     quantity: 5,
     unit: "bottle",
   ),
   Product(
     id: 6,
     productName: "Candy",
-    category: categories[5],
+    category: categories[4],
     quantity: 6,
     unit: "unit",
   ),

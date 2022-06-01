@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../components/data_entry.dart';
 import '../constants.dart';
 
 class CreatePage extends StatefulWidget {
@@ -27,6 +28,7 @@ class _CreatePageState extends State<CreatePage> {
           ),
         ),
       ),
+      body: const DataEntry(),
     );
   }
 }

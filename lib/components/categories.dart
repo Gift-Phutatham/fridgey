@@ -19,13 +19,13 @@ class _CategoriesState extends State<Categories> {
       height: 25,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
+        itemCount: allCategories.length,
         itemBuilder: (item, index) => GestureDetector(
           child: Container(
             child: Column(
               children: [
                 Text(
-                  categories[index],
+                  allCategories[index],
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: kDarkTextColor,
