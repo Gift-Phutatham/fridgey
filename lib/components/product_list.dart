@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fridgey/pages/update_page.dart';
 
 import '../models/product.dart';
+import '../pages/update_page.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({Key? key}) : super(key: key);
@@ -51,6 +53,10 @@ class _ProductListState extends State<ProductList> {
               ),
             ],
           ),
+        ),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const UpdatePage()),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../components/categories.dart';
 import '../components/product_list.dart';
 import '../constants.dart';
+import '../pages/create_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,6 +32,14 @@ class _HomePageState extends State<HomePage> {
         Categories(),
         Expanded(child: ProductList())
       ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const CreatePage()),
+        ),
+        backgroundColor: Colors.green,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

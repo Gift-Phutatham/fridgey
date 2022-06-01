@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../components/data_entry.dart';
 import '../constants.dart';
 
-class CreatePage extends StatefulWidget {
-  const CreatePage({Key? key}) : super(key: key);
+class UpdatePage extends StatefulWidget {
+  const UpdatePage({Key? key}) : super(key: key);
 
   @override
-  State<CreatePage> createState() => _CreatePageState();
+  State<UpdatePage> createState() => _UpdatePageState();
 }
 
-class _CreatePageState extends State<CreatePage> {
+class _UpdatePageState extends State<UpdatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _CreatePageState extends State<CreatePage> {
         backgroundColor: kBackgroundColor,
         elevation: 0,
         title: const Text(
-          'CREATE',
+          'EDIT',
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
