@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'categories.dart';
+import 'components/categories.dart';
 import 'constants.dart';
 
 class HomePage extends StatelessWidget {

@@ -30,10 +30,4 @@ class _CategoriesState extends State<Categories> {
       ),
     );
   }
-
-  // Widget buildCategory(int index) {
-  //   return Text(
-  //     categories[index],
-  //   );
-  // }
 }
