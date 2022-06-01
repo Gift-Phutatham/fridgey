@@ -12,7 +12,7 @@ class ProductList extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (item, index) => GestureDetector(
         child: Container(
-          margin: const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 5.0),
+          margin: const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 3.0),
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
