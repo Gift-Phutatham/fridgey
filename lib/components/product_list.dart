@@ -30,7 +30,7 @@ class ProductList extends StatelessWidget {
                       Text(
                         products[index].productName,
                       ),
-                      SizedBox(height: 5.0),
+                      const SizedBox(height: 5.0),
                       Text(
                         '${products[index].quantity.toString()} ${products[index].unit}',
                       )
