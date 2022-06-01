@@ -44,25 +44,11 @@ class _ProductListState extends State<ProductList> {
                   ),
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  Row(
-                    children: const <Widget>[
-                      Image(
-                        image: AssetImage('assets/delete.png'),
-                        width: 20,
-                        height: 20,
-                      ),
-                      SizedBox(width: 12.0),
-                      Image(
-                        image: AssetImage('assets/update.png'),
-                        width: 20,
-                        height: 20,
-                      ),
-                    ],
-                  ),
-                ],
-              )
+              const Image(
+                image: AssetImage('assets/next.png'),
+                width: 20,
+                height: 20,
+              ),
             ],
           ),
         ),
