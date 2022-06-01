@@ -51,50 +51,59 @@ class Product {
   String toString() {
     return 'Product(Id: $id, Product name: $productName, Category: $category, Quantity: $quantity, Unit: $unit)';
   }
-
-  /// Mock data
-  List<Product> products = [
-    Product(
-      id: 1,
-      productName: "productName1",
-      category: "category1",
-      quantity: 1,
-      unit: "unit1",
-    ),
-    Product(
-      id: 2,
-      productName: "productName2",
-      category: "category2",
-      quantity: 2,
-      unit: "unit2",
-    ),
-    Product(
-      id: 3,
-      productName: "productName3",
-      category: "category3",
-      quantity: 3,
-      unit: "unit3",
-    ),
-    Product(
-      id: 4,
-      productName: "productName4",
-      category: "category4",
-      quantity: 4,
-      unit: "unit4",
-    ),
-    Product(
-      id: 5,
-      productName: "productName5",
-      category: "category5",
-      quantity: 5,
-      unit: "unit5",
-    ),
-    Product(
-      id: 6,
-      productName: "productName6",
-      category: "category6",
-      quantity: 6,
-      unit: "unit6",
-    ),
-  ];
 }
+
+/// Mock data
+List<String> categories = [
+  "All",
+  "Starch & Grains",
+  "Fruits & Vegetables",
+  "Meat & Fish",
+  "Dairy",
+  "Others",
+];
+
+List<Product> products = [
+  Product(
+    id: 1,
+    productName: "productName1",
+    category: categories[1],
+    quantity: 1,
+    unit: "unit1",
+  ),
+  Product(
+    id: 2,
+    productName: "productName2",
+    category: categories[2],
+    quantity: 2,
+    unit: "unit2",
+  ),
+  Product(
+    id: 3,
+    productName: "productName3",
+    category: categories[3],
+    quantity: 3,
+    unit: "unit3",
+  ),
+  Product(
+    id: 4,
+    productName: "productName4",
+    category: categories[4],
+    quantity: 4,
+    unit: "unit4",
+  ),
+  Product(
+    id: 5,
+    productName: "productName5",
+    category: categories[5],
+    quantity: 5,
+    unit: "unit5",
+  ),
+  Product(
+    id: 6,
+    productName: "productName6",
+    category: categories[6],
+    quantity: 6,
+    unit: "unit6",
+  ),
+];

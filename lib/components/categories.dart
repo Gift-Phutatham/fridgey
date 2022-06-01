@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../models/product.dart';
 
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
@@ -10,14 +11,6 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  List<String> categories = [
-    "All",
-    "Starch & Grains",
-    "Fruits & Vegetables",
-    "Meat & Fish",
-    "Dairy",
-    "Others",
-  ];
   int myIndex = 0;
 
   @override
