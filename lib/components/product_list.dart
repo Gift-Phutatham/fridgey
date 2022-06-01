@@ -12,13 +12,21 @@ class ProductList extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (item, index) => GestureDetector(
         child: Row(
-          children: [
+          children: <Widget>[
             Image(
               image: AssetImage(getImage(products[index].category)),
               width: 50,
               height: 50,
             ),
-            Text(products[index].productName),
+            Column(
+              children: [
+                Text(products[index].productName),
+                Text(
+                  '${products[index].quantity.toString()} ${products[index].unit}',
+                )
+              ],
+              crossAxisAlignment: CrossAxisAlignment.start,
+            ),
           ],
         ),
       ),
@@ -26,9 +34,9 @@ class ProductList extends StatelessWidget {
   }
 }
 
-String getImage(String tipLevel) {
+String getImage(String product) {
   String toReturn = '';
-  switch (tipLevel) {
+  switch (product) {
     case 'Starch & Grains':
       {
         toReturn = 'assets/starch_grains.png';

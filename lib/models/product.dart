@@ -66,14 +66,14 @@ List<String> categories = [
 List<Product> products = [
   Product(
     id: 1,
-    productName: "productName1",
+    productName: "Rice",
     category: categories[1],
     quantity: 1,
     unit: "unit1",
   ),
   Product(
     id: 2,
-    productName: "productName2",
+    productName: "",
     category: categories[2],
     quantity: 2,
     unit: "unit2",
