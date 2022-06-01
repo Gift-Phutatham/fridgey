@@ -71,47 +71,53 @@ List<String> allCategories = [
   "Others",
 ];
 
+List<String> units = [
+  "kilogram",
+  "milligram",
+  "unit",
+];
+
 List<Product> products = [
   Product(
     id: 1,
     productName: "Rice",
     category: categories[0],
     quantity: 1,
-    unit: "kg",
+    unit: units[0],
   ),
   Product(
     id: 2,
     productName: "Apple",
     category: categories[1],
     quantity: 2,
-    unit: "unit",
+    unit: units[2],
   ),
   Product(
     id: 3,
     productName: "Chicken",
     category: categories[2],
     quantity: 3,
-    unit: "kg",
+    unit: units[0],
   ),
   Product(
     id: 4,
     productName: "Cheese",
     category: categories[3],
-    quantity: 4,
-    unit: "mg",
+    quantity: 40,
+    unit: units[1],
   ),
   Product(
     id: 5,
     productName: "Beer",
     category: categories[4],
     quantity: 5,
-    unit: "bottle",
+    unit: units[2],
   ),
   Product(
     id: 6,
     productName: "Candy",
     category: categories[4],
     quantity: 6,
-    unit: "unit",
+    unit: units[2],
   ),
 ];

@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
 import '../models/product.dart';
 
 class DataEntry extends StatefulWidget {
@@ -56,10 +57,18 @@ class _DataEntryState extends State<DataEntry> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 80),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 30),
+              const Text(
+                'Product Name',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: kBrightTextColor,
+                ),
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
@@ -74,17 +83,21 @@ class _DataEntryState extends State<DataEntry> {
                 ),
               ),
               const SizedBox(height: 30),
+              const Text(
+                'Category',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: kBrightTextColor,
+                ),
+              ),
               DropdownButtonFormField2(
                 decoration: InputDecoration(
-                  //Add isDense true and zero Padding.
-                  //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
                   isDense: true,
                   contentPadding: EdgeInsets.zero,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  //Add more decoration as you want here
-                  //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
                 ),
                 isExpanded: true,
                 hint: const Text(
@@ -114,19 +127,111 @@ class _DataEntryState extends State<DataEntry> {
                     .toList(),
                 validator: (value) {
                   if (value == null) {
-                    return 'Please select gender.';
+                    return 'Please select category.';
                   }
                 },
-                onChanged: (value) {
-                  //Do something when changing the item if you want.
-                },
+                onChanged: (value) {},
                 onSaved: (value) {
                   selectedValue = value.toString();
                 },
               ),
               const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Quantity',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: kBrightTextColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 150,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
+                            hintText: 'Quantity',
+                            hintStyle: const TextStyle(fontSize: 14),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 30),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        'Unit',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: kBrightTextColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 150,
+                        child: DropdownButtonFormField2(
+                          decoration: InputDecoration(
+                            isDense: true,
+                            contentPadding: EdgeInsets.zero,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                          isExpanded: true,
+                          hint: const Text(
+                            'Unit',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          icon: const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.black45,
+                          ),
+                          iconSize: 30,
+                          buttonHeight: 60,
+                          buttonPadding:
+                              const EdgeInsets.only(left: 20, right: 10),
+                          dropdownDecoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          items: units
+                              .map((item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ))
+                              .toList(),
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select category.';
+                            }
+                          },
+                          onChanged: (value) {},
+                          onSaved: (value) {
+                            selectedValue = value.toString();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              Center(
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
