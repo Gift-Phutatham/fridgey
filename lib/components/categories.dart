@@ -27,25 +27,32 @@ class _CategoriesState extends State<Categories> {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
-        itemBuilder: (item, index) => Container(
-          padding: const EdgeInsets.symmetric(horizontal: kPadding),
-          child: Column(
-            children: [
-              Text(
-                categories[index],
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: kDarkTextColor,
+        itemBuilder: (item, index) => GestureDetector(
+          child: Container(
+            child: Column(
+              children: [
+                Text(
+                  categories[index],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kDarkTextColor,
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: kPadding / 4),
-                height: 3,
-                width: 50,
-                color: index == myIndex ? Colors.black : Colors.transparent,
-              )
-            ],
+                Container(
+                  margin: const EdgeInsets.only(top: kPadding / 4),
+                  height: 3,
+                  width: 50,
+                  color: myIndex == index ? Colors.black : Colors.transparent,
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: kPadding / 2),
           ),
+          onTap: () {
+            setState(() {
+              myIndex = index;
+            });
+          },
         ),
       ),
     );
