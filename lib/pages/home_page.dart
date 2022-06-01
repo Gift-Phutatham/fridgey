@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/categories.dart';
+import '../components/product_list.dart';
 import '../constants.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,6 +24,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(children: const <Widget>[
         Categories(),
+        Expanded(child: ProductList())
       ]),
     );
   }
