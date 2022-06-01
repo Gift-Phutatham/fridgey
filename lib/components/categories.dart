@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
 
@@ -10,23 +12,41 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   List<String> categories = [
     "All",
-    "Vegetables",
-    "Fruits",
-    "Grains",
-    "Meat",
+    "Starch & Grains",
+    "Fruits & Vegetables",
+    "Meat & Fish",
     "Dairy",
     "Others",
   ];
-  int index = 0;
+  int myIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 25,
       child: ListView.builder(
-        itemCount: categories.length,
-        itemBuilder: (context, index) => Text(categories[index]),
         scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        itemBuilder: (item, index) => Container(
+          padding: const EdgeInsets.symmetric(horizontal: kPadding),
+          child: Column(
+            children: [
+              Text(
+                categories[index],
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: kDarkTextColor,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: kPadding / 4),
+                height: 3,
+                width: 50,
+                color: index == myIndex ? Colors.black : Colors.transparent,
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
