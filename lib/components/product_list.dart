@@ -11,48 +11,53 @@ class ProductList extends StatelessWidget {
       scrollDirection: Axis.vertical,
       itemCount: products.length,
       itemBuilder: (item, index) => GestureDetector(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Image(
-                  image: AssetImage(getImage(products[index].category)),
-                  width: 50,
-                  height: 50,
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      products[index].productName,
-                    ),
-                    Text(
-                      '${products[index].quantity.toString()} ${products[index].unit}',
-                    )
-                  ],
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Row(
-                  children: const [
-                    Image(
-                      image: AssetImage('assets/delete.png'),
-                      width: 10,
-                      height: 10,
-                    ),
-                    Image(
-                      image: AssetImage('assets/update.png'),
-                      width: 10,
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ],
+        child: Container(
+          margin: const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Image(
+                    image: AssetImage(getImage(products[index].category)),
+                    width: 50,
+                    height: 50,
+                  ),
+                  const SizedBox(width: 10.0),
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        products[index].productName,
+                      ),
+                      Text(
+                        '${products[index].quantity.toString()} ${products[index].unit}',
+                      )
+                    ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Row(
+                    children: const [
+                      Image(
+                        image: AssetImage('assets/delete.png'),
+                        width: 10,
+                        height: 10,
+                      ),
+                      Image(
+                        image: AssetImage('assets/update.png'),
+                        width: 10,
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
