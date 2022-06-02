@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// import 'package:sqflite/sqflite.dart';
-
 import '../models/product.dart';
 import '../pages/update_page.dart';
 import '../sqflite/database.dart';
