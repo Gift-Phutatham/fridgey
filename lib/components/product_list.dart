@@ -73,7 +73,7 @@ class _ProductListState extends State<ProductList> {
                       ],
                     ),
                     const Image(
-                      image: AssetImage('assets/next.png'),
+                      image: AssetImage('assets/update.png'),
                       width: 20,
                       height: 20,
                     ),

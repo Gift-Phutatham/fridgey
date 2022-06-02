@@ -33,200 +33,33 @@ class _DataEntryState extends State<DataEntry> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
-              const Text(
-                'Product Name',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: kBrightTextColor,
-                ),
+              getProductTextFormField(
+                'Product',
+                _productName,
+                TextInputType.text,
+                'Enter Your Product.',
               ),
-              TextFormField(
-                controller: _productName,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 20,
-                  ),
-                  hintText: 'Enter Your Product.',
-                  hintStyle: const TextStyle(fontSize: 14),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 30),
-              const Text(
-                'Category',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: kBrightTextColor,
-                ),
-              ),
-              DropdownButtonFormField2(
-                decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: EdgeInsets.zero,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                isExpanded: true,
-                hint: const Text(
-                  'Select Your Category',
-                  style: TextStyle(fontSize: 14),
-                ),
-                icon: const Icon(
-                  Icons.arrow_drop_down,
-                  color: Colors.black45,
-                ),
-                iconSize: 30,
-                buttonHeight: 60,
-                buttonPadding: const EdgeInsets.only(left: 20, right: 10),
-                dropdownDecoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                items: categories
-                    .map((item) => DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ))
-                    .toList(),
-                validator: (value) {
-                  if (value == null) {
-                    return 'Please select category.';
-                  }
-                },
-                onChanged: (value) {
-                  setState(() {
-                    selectedCategory = value.toString();
-                  });
-                },
-              ),
-              const SizedBox(height: 30),
+              getCategoryDropdownFormField('Select Your Category'),
+              getHeightSizedBox(),
               Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Quantity',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: kBrightTextColor,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 150,
-                        child: TextFormField(
-                          controller: _quantity,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 20,
-                            ),
-                            hintText: 'Quantity',
-                            hintStyle: const TextStyle(fontSize: 14),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ],
+                  getQuantityTextFormField(
+                    'Quantity',
+                    _quantity,
+                    TextInputType.number,
+                    'Quantity',
                   ),
-                  const SizedBox(width: 30),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Unit',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: kBrightTextColor,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 150,
-                        child: DropdownButtonFormField2(
-                          decoration: InputDecoration(
-                            isDense: true,
-                            contentPadding: EdgeInsets.zero,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                          isExpanded: true,
-                          hint: const Text(
-                            'Unit',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          icon: const Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.black45,
-                          ),
-                          iconSize: 30,
-                          buttonHeight: 60,
-                          buttonPadding:
-                              const EdgeInsets.only(left: 20, right: 10),
-                          dropdownDecoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          items: units
-                              .map((item) => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ))
-                              .toList(),
-                          validator: (value) {
-                            if (value == null) {
-                              return 'Please select unit.';
-                            }
-                          },
-                          onChanged: (value) {
-                            setState(() {
-                              selectedUnit = value.toString();
-                            });
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                  getWeightSizedBox(),
+                  getUnitDropdownFormField(),
                 ],
               ),
-              const SizedBox(height: 30),
+              getHeightSizedBox(),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       addProduct();
-                      // Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const HomePage()),
@@ -240,6 +73,184 @@ class _DataEntryState extends State<DataEntry> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget getHeightSizedBox() {
+    return const SizedBox(height: 30);
+  }
+
+  Widget getWeightSizedBox() {
+    return const SizedBox(width: 30);
+  }
+
+  Widget getText(String text) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
+        color: kBrightTextColor,
+      ),
+    );
+  }
+
+  Widget getTextFormField(controller, textInputType, hintText) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: textInputType,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20,
+        ),
+        hintText: hintText,
+        hintStyle: const TextStyle(fontSize: 14),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      validator: (String? value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget getProductTextFormField(text, controller, textInputType, hintText) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        getHeightSizedBox(),
+        getText(text),
+        getTextFormField(controller, textInputType, hintText),
+      ],
+    );
+  }
+
+  Widget getCategoryDropdownFormField(hintText) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        getHeightSizedBox(),
+        getText('Category'),
+        DropdownButtonFormField2(
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.zero,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          isExpanded: true,
+          hint: Text(
+            hintText,
+            style: const TextStyle(fontSize: 14),
+          ),
+          icon: const Icon(
+            Icons.arrow_drop_down,
+            color: Colors.black45,
+          ),
+          iconSize: 30,
+          buttonHeight: 60,
+          buttonPadding: const EdgeInsets.only(left: 20, right: 10),
+          dropdownDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          items: categories
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ))
+              .toList(),
+          validator: (value) {
+            if (value == null) {
+              return 'Please select category.';
+            }
+          },
+          onChanged: (value) {
+            setState(() {
+              selectedCategory = value.toString();
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget getQuantityTextFormField(text, controller, textInputType, hintText) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        getText(text),
+        SizedBox(
+          width: 150,
+          child: getTextFormField(controller, textInputType, hintText),
+        ),
+      ],
+    );
+  }
+
+  Widget getUnitDropdownFormField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        getText('Unit'),
+        SizedBox(
+          width: 150,
+          child: DropdownButtonFormField2(
+            decoration: InputDecoration(
+              isDense: true,
+              contentPadding: EdgeInsets.zero,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            isExpanded: true,
+            hint: const Text(
+              'Unit',
+              style: TextStyle(fontSize: 14),
+            ),
+            icon: const Icon(
+              Icons.arrow_drop_down,
+              color: Colors.black45,
+            ),
+            iconSize: 30,
+            buttonHeight: 60,
+            buttonPadding: const EdgeInsets.only(left: 20, right: 10),
+            dropdownDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            items: units
+                .map((item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ))
+                .toList(),
+            validator: (value) {
+              if (value == null) {
+                return 'Please select unit.';
+              }
+            },
+            onChanged: (value) {
+              setState(() {
+                selectedUnit = value.toString();
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 
