@@ -24,6 +24,8 @@ class _DataEntryState extends State<DataEntry> {
 
   @override
   Widget build(BuildContext context) {
+    final categories = getCategories();
+    final units = getUnits();
     return Scaffold(
       body: Form(
         key: _formKey,

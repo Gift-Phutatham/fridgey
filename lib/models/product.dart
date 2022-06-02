@@ -53,26 +53,26 @@ class Product {
   }
 }
 
-/// Mock data
-List<String> categories = [
-  "Starch & Grains",
-  "Fruits & Vegetables",
-  "Meat & Fish",
-  "Dairy",
-  "Others",
-];
+List<String> getCategories() {
+  return [
+    "Starch & Grains",
+    "Fruits & Vegetables",
+    "Meat & Fish",
+    "Dairy",
+    "Others",
+  ];
+}
 
-List<String> allCategories = [
-  "All",
-  "Starch & Grains",
-  "Fruits & Vegetables",
-  "Meat & Fish",
-  "Dairy",
-  "Others",
-];
+List<String> getAllCategories() {
+  List<String> allCategories = getCategories();
+  allCategories.insert(0, "All");
+  return allCategories;
+}
 
-List<String> units = [
-  "kilogram",
-  "milligram",
-  "unit",
-];
+List<String> getUnits() {
+  return [
+    "kilogram",
+    "milligram",
+    "unit",
+  ];
+}
