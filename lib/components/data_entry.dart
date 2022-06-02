@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:fridgey/pages/home_page.dart';
 
 import '../constants.dart';
 import '../models/product.dart';
@@ -222,7 +223,11 @@ class _DataEntryState extends State<DataEntry> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       addProduct();
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const HomePage()),
+                      );
                     }
                   },
                   child: const Text('Create'),
