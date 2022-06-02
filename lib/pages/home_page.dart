@@ -17,18 +17,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         backgroundColor: kBackgroundColor,
         elevation: 0,
-        title: Transform(
-          transform: Matrix4.translationValues(-50.0, 0.0, 0.0),
-          child: const Text(
-            'FRIDGEY',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: kDarkTextColor,
-            ),
+        title: const Text(
+          'FRIDGEY',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: kDarkTextColor,
           ),
         ),
       ),

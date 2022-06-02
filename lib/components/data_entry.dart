@@ -40,7 +40,10 @@ class _DataEntryState extends State<DataEntry> {
                 TextInputType.text,
                 'Enter Your Product.',
               ),
-              getCategoryDropdownFormField('Select Your Category'),
+              getCategoryDropdownFormField(
+                'Category',
+                'Select Your Category',
+              ),
               getHeightSizedBox(),
               Row(
                 children: [
@@ -51,7 +54,10 @@ class _DataEntryState extends State<DataEntry> {
                     'Quantity',
                   ),
                   getWeightSizedBox(),
-                  getUnitDropdownFormField(),
+                  getUnitDropdownFormField(
+                    'Unit',
+                    'Unit',
+                  ),
                 ],
               ),
               getHeightSizedBox(),
@@ -129,12 +135,12 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Widget getCategoryDropdownFormField(hintText) {
+  Widget getCategoryDropdownFormField(text, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         getHeightSizedBox(),
-        getText('Category'),
+        getText(text),
         DropdownButtonFormField2(
           decoration: InputDecoration(
             isDense: true,
@@ -173,6 +179,7 @@ class _DataEntryState extends State<DataEntry> {
             if (value == null) {
               return 'Please select category.';
             }
+            return null;
           },
           onChanged: (value) {
             setState(() {
@@ -197,11 +204,11 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Widget getUnitDropdownFormField() {
+  Widget getUnitDropdownFormField(text, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        getText('Unit'),
+        getText(text),
         SizedBox(
           width: 150,
           child: DropdownButtonFormField2(
@@ -213,9 +220,9 @@ class _DataEntryState extends State<DataEntry> {
               ),
             ),
             isExpanded: true,
-            hint: const Text(
-              'Unit',
-              style: TextStyle(fontSize: 14),
+            hint: Text(
+              hintText,
+              style: const TextStyle(fontSize: 14),
             ),
             icon: const Icon(
               Icons.arrow_drop_down,
@@ -242,6 +249,7 @@ class _DataEntryState extends State<DataEntry> {
               if (value == null) {
                 return 'Please select unit.';
               }
+              return null;
             },
             onChanged: (value) {
               setState(() {
