@@ -1,9 +1,9 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:fridgey/pages/home_page.dart';
 
 import '../constants.dart';
 import '../models/product.dart';
+import '../pages/home_page.dart';
 import '../sqflite/database.dart';
 
 class DataEntry extends StatefulWidget {
@@ -22,10 +22,11 @@ class _DataEntryState extends State<DataEntry> {
   final TextEditingController _productName = TextEditingController();
   final TextEditingController _quantity = TextEditingController();
 
+  final categories = getCategories();
+  final units = getUnits();
+
   @override
   Widget build(BuildContext context) {
-    final categories = getCategories();
-    final units = getUnits();
     return Scaffold(
       body: Form(
         key: _formKey,

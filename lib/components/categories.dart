@@ -12,10 +12,10 @@ class Categories extends StatefulWidget {
 
 class _CategoriesState extends State<Categories> {
   int myIndex = 0;
+  final allCategories = getAllCategories();
 
   @override
   Widget build(BuildContext context) {
-    final allCategories = getAllCategories();
     return SizedBox(
       height: 25,
       child: ListView.builder(
