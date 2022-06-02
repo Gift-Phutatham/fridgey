@@ -18,11 +18,6 @@ class _DataEntryState extends State<DataEntry> {
   String? selectedCategory;
   String? selectedUnit;
 
-  late String productName;
-  late String category;
-  late int quantity;
-  late String unit;
-
   final TextEditingController _productName = TextEditingController();
   final TextEditingController _quantity = TextEditingController();
 
