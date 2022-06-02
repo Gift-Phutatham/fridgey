@@ -77,6 +77,7 @@ List<String> units = [
   "unit",
 ];
 
+/*
 List<Product> products = [
   Product(
     id: 1,
@@ -121,3 +122,4 @@ List<Product> products = [
     unit: units[2],
   ),
 ];
+ */

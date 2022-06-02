@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 import '../models/product.dart';
+import '../sqflite/database.dart';
 
 class DataEntry extends StatefulWidget {
   const DataEntry({Key? key}) : super(key: key);
@@ -14,7 +15,16 @@ class DataEntry extends StatefulWidget {
 class _DataEntryState extends State<DataEntry> {
   final _formKey = GlobalKey<FormState>();
 
-  String? selectedValue;
+  String? selectedCategory;
+  String? selectedUnit;
+
+  late String productName;
+  late String category;
+  late int quantity;
+  late String unit;
+
+  final TextEditingController _productName = TextEditingController();
+  final TextEditingController _quantity = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +45,7 @@ class _DataEntryState extends State<DataEntry> {
                 ),
               ),
               TextFormField(
+                controller: _productName,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -101,9 +112,10 @@ class _DataEntryState extends State<DataEntry> {
                     return 'Please select category.';
                   }
                 },
-                onChanged: (value) {},
-                onSaved: (value) {
-                  selectedValue = value.toString();
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value.toString();
+                  });
                 },
               ),
               const SizedBox(height: 30),
@@ -122,6 +134,7 @@ class _DataEntryState extends State<DataEntry> {
                       SizedBox(
                         width: 150,
                         child: TextFormField(
+                          controller: _quantity,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
@@ -194,12 +207,13 @@ class _DataEntryState extends State<DataEntry> {
                               .toList(),
                           validator: (value) {
                             if (value == null) {
-                              return 'Please select category.';
+                              return 'Please select unit.';
                             }
                           },
-                          onChanged: (value) {},
-                          onSaved: (value) {
-                            selectedValue = value.toString();
+                          onChanged: (value) {
+                            setState(() {
+                              selectedUnit = value.toString();
+                            });
                           },
                         ),
                       ),
@@ -212,7 +226,9 @@ class _DataEntryState extends State<DataEntry> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
+                      // _formKey.currentState!.save();
+                      addProduct();
+                      Navigator.pop(context);
                     }
                   },
                   child: const Text('Create'),
@@ -223,5 +239,15 @@ class _DataEntryState extends State<DataEntry> {
         ),
       ),
     );
+  }
+
+  Future addProduct() async {
+    final product = Product(
+      productName: _productName.text,
+      category: selectedCategory.toString(),
+      quantity: int.parse(_quantity.text),
+      unit: selectedUnit.toString(),
+    );
+    await FridgeyDb.instance.createProduct(product);
   }
 }

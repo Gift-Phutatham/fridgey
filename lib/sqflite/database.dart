@@ -61,7 +61,12 @@ class FridgeyDb {
     final db = await instance.database;
     const orderBy = '${DbFields.productName} ASC';
     final result = await db.query(table, orderBy: orderBy);
-    return result.map((json) => Product.fromJson(json)).toList();
+    List<Product> x = result.map((json) => Product.fromJson(json)).toList();
+    print(x);
+    // for (int i = 0; i < 100; i++) {
+    //   deleteProduct(i);
+    // }
+    return x;
   }
 
   Future<int> updateProduct(Product product) async {
