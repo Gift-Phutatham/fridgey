@@ -37,10 +37,15 @@ class _ProductListState extends State<ProductList> {
             itemCount: snapshot.data.length,
             itemBuilder: (item, index) => GestureDetector(
               child: Container(
-                margin:
-                    const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 3.0),
+                margin: const EdgeInsets.only(
+                  top: 5.0,
+                  bottom: 5.0,
+                  right: 3.0,
+                ),
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
+                  horizontal: 20.0,
+                  vertical: 10.0,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -89,36 +94,4 @@ class _ProductListState extends State<ProductList> {
       },
     );
   }
-}
-
-String getImage(String product) {
-  String toReturn = '';
-  switch (product) {
-    case 'Starch & Grains':
-      {
-        toReturn = 'assets/starch_grains.png';
-      }
-      break;
-    case 'Fruits & Vegetables':
-      {
-        toReturn = 'assets/fruits_vegetables.png';
-      }
-      break;
-    case 'Meat & Fish':
-      {
-        toReturn = 'assets/meat_fish.png';
-      }
-      break;
-    case 'Dairy':
-      {
-        toReturn = 'assets/dairy.png';
-      }
-      break;
-    case 'Others':
-      {
-        toReturn = 'assets/others.png';
-      }
-      break;
-  }
-  return toReturn;
 }

@@ -76,3 +76,20 @@ List<String> getUnits() {
     "unit",
   ];
 }
+
+String getImage(String product) {
+  late String toReturn;
+  List<String> category = getCategories();
+  if (product == category[0]) {
+    toReturn = 'assets/starch_grains.png';
+  } else if (product == category[1]) {
+    toReturn = 'assets/fruits_vegetables.png';
+  } else if (product == category[2]) {
+    toReturn = 'assets/meat_fish.png';
+  } else if (product == category[3]) {
+    toReturn = 'assets/dairy.png';
+  } else if (product == category[4]) {
+    toReturn = 'assets/others.png';
+  }
+  return toReturn;
+}
