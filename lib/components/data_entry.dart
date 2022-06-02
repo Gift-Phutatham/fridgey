@@ -221,7 +221,6 @@ class _DataEntryState extends State<DataEntry> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // _formKey.currentState!.save();
                       addProduct();
                       Navigator.pop(context);
                     }
