@@ -40,13 +40,26 @@ class _ProductListState extends State<ProductList> {
             itemBuilder: (item, index) => GestureDetector(
               child: Container(
                 margin: const EdgeInsets.only(
-                  top: 5.0,
-                  bottom: 5.0,
-                  right: 3.0,
+                  top: 10.0,
+                  right: 15.0,
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20.0,
                   vertical: 10.0,
+                ),
+                decoration: const BoxDecoration(
+                  color: kBackgroundColor1,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5,
+                      offset: Offset(1, 2),
+                    ),
+                  ],
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
