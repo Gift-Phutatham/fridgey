@@ -28,6 +28,24 @@ class _DataEntryState extends State<DataEntry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 60,
+        leading: Container(
+          margin: const EdgeInsets.only(left: 25),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: kButtonColor1,
+            ),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const HomePage()),
+            ),
+          ),
+        ),
+      ),
       body: Form(
         key: _formKey,
         child: Padding(
