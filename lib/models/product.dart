@@ -73,6 +73,7 @@ List<String> getUnits() {
   return [
     "kilogram",
     "milligram",
+    "gram",
     "unit",
   ];
 }
