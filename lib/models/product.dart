@@ -58,7 +58,7 @@ List<String> getCategories() {
     "Starch & Grains",
     "Fruits & Vegetables",
     "Meat & Fish",
-    "Dairy",
+    "Drink & Beverage",
     "Others",
   ];
 }
@@ -87,8 +87,8 @@ String getImage(String product) {
   } else if (product == category[2]) {
     toReturn = 'assets/meat_fish.png';
   } else if (product == category[3]) {
-    toReturn = 'assets/dairy.png';
-  } else if (product == category[4]) {
+    toReturn = 'assets/drink_beverage.png';
+  } else {
     toReturn = 'assets/others.png';
   }
   return toReturn;
