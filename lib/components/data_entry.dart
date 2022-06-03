@@ -50,71 +50,73 @@ class _DataEntryState extends State<DataEntry> {
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Add Product',
-                style: TextStyle(
-                  color: kTextColor2,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Add Product',
+                  style: TextStyle(
+                    color: kTextColor2,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              getProductTextFormField(
-                'Product',
-                _productName,
-                TextInputType.text,
-                'Enter Your Product.',
-              ),
-              getCategoryDropdownFormField(
-                'Category',
-                'Select Your Category',
-              ),
-              const SizedBox(height: 30),
-              Row(
-                children: [
-                  getQuantityTextFormField(
-                    'Quantity',
-                    _quantity,
-                    TextInputType.number,
-                    'Quantity',
-                  ),
-                  const SizedBox(width: 30),
-                  getUnitDropdownFormField(
-                    'Unit',
-                    'Unit',
-                  ),
-                ],
-              ),
-              const SizedBox(height: 30),
-              Center(
-                child: ElevatedButton(
-                  child: const Text(
-                    'Save',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                getProductTextFormField(
+                  'Product',
+                  _productName,
+                  TextInputType.text,
+                  'Enter Your Product.',
+                ),
+                getCategoryDropdownFormField(
+                  'Category',
+                  'Select Your Category',
+                ),
+                const SizedBox(height: 30),
+                Row(
+                  children: [
+                    getQuantityTextFormField(
+                      'Quantity',
+                      _quantity,
+                      TextInputType.number,
+                      'Quantity',
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: kButtonColor1,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0)),
-                    minimumSize: const Size(100, 40),
-                  ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      addProduct();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => const HomePage()),
-                      );
-                    }
-                  },
+                    const SizedBox(width: 30),
+                    getUnitDropdownFormField(
+                      'Unit',
+                      'Unit',
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 30),
+                Center(
+                  child: ElevatedButton(
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: kButtonColor1,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0)),
+                      minimumSize: const Size(100, 40),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        addProduct();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const HomePage()),
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
