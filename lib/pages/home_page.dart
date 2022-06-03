@@ -17,14 +17,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: kBackgroundColor1,
         elevation: 0,
+        toolbarHeight: 75,
         title: const Text(
-          'FRIDGEY',
+          'FridgeY',
           style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: kDarkTextColor,
+            fontSize: 27,
+            fontWeight: FontWeight.w900,
+            color: kTextColor2,
+            letterSpacing: 3,
           ),
         ),
       ),

@@ -16,14 +16,14 @@ class _CreatePageState extends State<CreatePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: kBackgroundColor,
+        backgroundColor: kBackgroundColor1,
         elevation: 0,
         title: const Text(
           'CREATE',
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: kDarkTextColor,
+            color: kTextColor2,
           ),
         ),
       ),

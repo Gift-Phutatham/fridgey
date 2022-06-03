@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
 import '../pages/create_page.dart';
 
 class MyFloatingActionButton extends StatefulWidget {
@@ -17,7 +18,7 @@ class _MyFloatingActionButtonState extends State<MyFloatingActionButton> {
         context,
         MaterialPageRoute(builder: (_) => const CreatePage()),
       ),
-      backgroundColor: Colors.green,
+      backgroundColor: kButtonColor1,
       child: const Icon(Icons.add),
     );
   }

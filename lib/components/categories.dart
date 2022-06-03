@@ -27,16 +27,16 @@ class _CategoriesState extends State<Categories> {
               children: [
                 Text(
                   allCategories[index],
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: kDarkTextColor,
+                    color: myIndex == index ? kTextColor1 : kTextColor4,
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: kPadding / 4),
                   height: 3,
                   width: 50,
-                  color: myIndex == index ? Colors.black : Colors.transparent,
+                  color: myIndex == index ? kTextColor1 : Colors.transparent,
                 ),
               ],
             ),

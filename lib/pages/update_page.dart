@@ -16,14 +16,14 @@ class _UpdatePageState extends State<UpdatePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: kBackgroundColor,
+        backgroundColor: kBackgroundColor1,
         elevation: 0,
         title: const Text(
           'EDIT',
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: kDarkTextColor,
+            color: kTextColor2,
           ),
         ),
       ),

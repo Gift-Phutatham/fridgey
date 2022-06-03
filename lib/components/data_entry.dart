@@ -94,8 +94,8 @@ class _DataEntryState extends State<DataEntry> {
     return Text(
       text,
       style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: kBrightTextColor,
+        fontWeight: FontWeight.w900,
+        color: kTextColor1,
       ),
     );
   }

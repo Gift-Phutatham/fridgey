@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fridgey/constants.dart';
 
+import '../constants.dart';
 import '../models/product.dart';
 import '../pages/update_page.dart';
 import '../sqflite/database.dart';
@@ -62,10 +64,18 @@ class _ProductListState extends State<ProductList> {
                           children: <Widget>[
                             Text(
                               snapshot.data[index].productName,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w900,
+                                color: kTextColor3,
+                              ),
                             ),
                             const SizedBox(height: 5.0),
                             Text(
                               '${snapshot.data[index].quantity.toString()} ${snapshot.data[index].unit}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: kTextColor4,
+                              ),
                             )
                           ],
                           crossAxisAlignment: CrossAxisAlignment.start,
