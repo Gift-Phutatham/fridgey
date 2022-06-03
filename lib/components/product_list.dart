@@ -44,8 +44,8 @@ class _ProductListState extends State<ProductList> {
                   right: 15.0,
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 10.0,
+                  horizontal: 25.0,
+                  vertical: 12.0,
                 ),
                 decoration: const BoxDecoration(
                   color: kBackgroundColor1,
@@ -72,7 +72,7 @@ class _ProductListState extends State<ProductList> {
                           width: 50,
                           height: 50,
                         ),
-                        const SizedBox(width: 10.0),
+                        const SizedBox(width: 23.0),
                         Column(
                           children: <Widget>[
                             Text(
