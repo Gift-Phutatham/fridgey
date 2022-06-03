@@ -82,10 +82,9 @@ class _ProductListState extends State<ProductList> {
                         ),
                       ],
                     ),
-                    const Image(
-                      image: AssetImage('assets/update.png'),
-                      width: 20,
-                      height: 20,
+                    const Icon(
+                      Icons.edit,
+                      color: kButtonColor1,
                     ),
                   ],
                 ),

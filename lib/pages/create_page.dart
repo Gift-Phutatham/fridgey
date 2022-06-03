@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fridgey/pages/home_page.dart';
 
 import '../components/data_entry.dart';
 import '../constants.dart';
@@ -15,15 +16,20 @@ class _CreatePageState extends State<CreatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: kBackgroundColor1,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'CREATE',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: kTextColor2,
+        toolbarHeight: 60,
+        leading: Container(
+          margin: const EdgeInsets.only(left: 25),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: kButtonColor1,
+            ),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const HomePage()),
+            ),
           ),
         ),
       ),
