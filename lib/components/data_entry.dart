@@ -34,12 +34,12 @@ class _DataEntryState extends State<DataEntry> {
         toolbarHeight: 60,
         leading: Container(
           margin: const EdgeInsets.only(left: 25),
-          child: IconButton(
-            icon: const Icon(
+          child: GestureDetector(
+            child: const Icon(
               Icons.arrow_back_ios,
               color: kButtonColor1,
             ),
-            onPressed: () => Navigator.push(
+            onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const HomePage()),
             ),
