@@ -71,7 +71,7 @@ class _DataEntryState extends State<DataEntry> {
                 'Category',
                 'Select Your Category',
               ),
-              getHeightSizedBox(),
+              const SizedBox(height: 30),
               Row(
                 children: [
                   getQuantityTextFormField(
@@ -80,14 +80,14 @@ class _DataEntryState extends State<DataEntry> {
                     TextInputType.number,
                     'Quantity',
                   ),
-                  getWeightSizedBox(),
+                  const SizedBox(width: 30),
                   getUnitDropdownFormField(
                     'Unit',
                     'Unit',
                   ),
                 ],
               ),
-              getHeightSizedBox(),
+              const SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
                   child: const Text(
@@ -121,18 +121,11 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Widget getHeightSizedBox() {
-    return const SizedBox(height: 30);
-  }
-
-  Widget getWeightSizedBox() {
-    return const SizedBox(width: 30);
-  }
-
   Widget getText(String text) {
     return Text(
       text,
       style: const TextStyle(
+        fontSize: 15,
         fontWeight: FontWeight.w900,
         color: kTextColor1,
       ),
@@ -167,8 +160,9 @@ class _DataEntryState extends State<DataEntry> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        getHeightSizedBox(),
+        const SizedBox(height: 30),
         getText(text),
+        const SizedBox(height: 3),
         getTextFormField(controller, textInputType, hintText),
       ],
     );
@@ -178,8 +172,9 @@ class _DataEntryState extends State<DataEntry> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        getHeightSizedBox(),
+        const SizedBox(height: 30),
         getText(text),
+        const SizedBox(height: 3),
         DropdownButtonFormField2(
           decoration: InputDecoration(
             isDense: true,
@@ -235,6 +230,7 @@ class _DataEntryState extends State<DataEntry> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         getText(text),
+        const SizedBox(height: 3),
         SizedBox(
           width: 150,
           child: getTextFormField(controller, textInputType, hintText),
@@ -248,6 +244,7 @@ class _DataEntryState extends State<DataEntry> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         getText(text),
+        const SizedBox(height: 3),
         SizedBox(
           width: 150,
           child: DropdownButtonFormField2(
