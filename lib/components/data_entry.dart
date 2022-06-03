@@ -31,7 +31,7 @@ class _DataEntryState extends State<DataEntry> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 60,
+        toolbarHeight: 75,
         leading: Container(
           margin: const EdgeInsets.only(left: 25),
           child: IconButton(
@@ -51,7 +51,16 @@ class _DataEntryState extends State<DataEntry> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Text(
+                'Add Product',
+                style: TextStyle(
+                  color: kTextColor2,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               getProductTextFormField(
                 'Product',
                 _productName,
