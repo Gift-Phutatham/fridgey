@@ -81,6 +81,19 @@ class _DataEntryState extends State<DataEntry> {
               getHeightSizedBox(),
               Center(
                 child: ElevatedButton(
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: kButtonColor1,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0)),
+                    minimumSize: const Size(100, 40),
+                  ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       addProduct();
@@ -90,7 +103,6 @@ class _DataEntryState extends State<DataEntry> {
                       );
                     }
                   },
-                  child: const Text('Create'),
                 ),
               ),
             ],
