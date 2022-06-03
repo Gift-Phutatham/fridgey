@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 60,
+        toolbarHeight: 75,
         title: Transform(
           transform: Matrix4.translationValues(-53.0, 0.0, 0.0),
           child: const Text(

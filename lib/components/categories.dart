@@ -25,6 +25,7 @@ class _CategoriesState extends State<Categories> {
           itemCount: allCategories.length,
           itemBuilder: (item, index) => GestureDetector(
             child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: kPadding / 2),
               child: Column(
                 children: [
                   Text(
@@ -42,7 +43,6 @@ class _CategoriesState extends State<Categories> {
                   ),
                 ],
               ),
-              padding: const EdgeInsets.symmetric(horizontal: kPadding / 2),
             ),
             onTap: () {
               setState(() {
