@@ -63,9 +63,16 @@ class _ProductListState extends State<ProductList> {
                     ],
                   ),
                 ),
-                onTap: () {
+                onTap: () async {
+                  if (allCategories[index] != 'All') {
+                    products = FridgeyDb.instance
+                        .getProductByCategory(allCategories[index]);
+                  } else {
+                    products = FridgeyDb.instance.readProducts();
+                  }
                   setState(() {
                     myIndex = index;
+                    products = products;
                   });
                 },
               ),

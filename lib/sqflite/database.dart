@@ -83,6 +83,13 @@ class FridgeyDb {
     );
   }
 
+  Future<List<Product>> getProductByCategory(String category) async {
+    final db = await instance.database;
+    final result =
+        await db.rawQuery('SELECT * FROM $table WHERE category=?', [category]);
+    return result.map((json) => Product.fromJson(json)).toList();
+  }
+
   Future closeDb() async {
     final db = await instance.database;
     db.close();
