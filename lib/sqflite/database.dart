@@ -59,8 +59,7 @@ class FridgeyDb {
 
   Future<List<Product>> readProducts() async {
     final db = await instance.database;
-    const orderBy = '${DbFields.productName} ASC';
-    final result = await db.query(table, orderBy: orderBy);
+    final result = await db.query(table, orderBy: DbFields.productName);
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
@@ -85,8 +84,9 @@ class FridgeyDb {
 
   Future<List<Product>> getProductByCategory(String category) async {
     final db = await instance.database;
-    final result =
-        await db.rawQuery('SELECT * FROM $table WHERE category=?', [category]);
+    final result = await db.rawQuery(
+        'SELECT * FROM $table WHERE category=? ORDER BY ${DbFields.productName}',
+        [category]);
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
