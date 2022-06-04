@@ -17,7 +17,7 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       child: SizedBox(
         height: 25,
         child: ListView.builder(
@@ -25,7 +25,7 @@ class _CategoriesState extends State<Categories> {
           itemCount: allCategories.length,
           itemBuilder: (item, index) => GestureDetector(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: kPadding / 2),
+              padding: const EdgeInsets.symmetric(horizontal: 11),
               child: Column(
                 children: [
                   Text(

@@ -18,24 +18,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 75,
-        title: Transform(
-          transform: Matrix4.translationValues(-53.0, 0.0, 0.0),
-          child: const Text(
-            'FridgeY',
-            style: TextStyle(
-              fontSize: 27,
-              fontWeight: FontWeight.w900,
-              color: kTextColor2,
-              letterSpacing: 3,
-            ),
+        toolbarHeight: 70,
+        title: const Text(
+          'FridgeY',
+          style: TextStyle(
+            fontSize: 27,
+            fontWeight: FontWeight.w900,
+            color: kTextColor2,
+            letterSpacing: 3,
           ),
         ),
       ),
       body: Column(children: const <Widget>[
         Categories(),
+        SizedBox(height: 3),
         Expanded(child: ProductList())
       ]),
       floatingActionButton: FloatingActionButton(

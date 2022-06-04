@@ -37,6 +37,7 @@ class _DataEntryState extends State<DataEntry> {
           child: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             color: kButtonColor1,
+            iconSize: 28,
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const HomePage()),
