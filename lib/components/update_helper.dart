@@ -6,14 +6,14 @@ import '../models/product.dart';
 import '../pages/home_page.dart';
 import '../sqflite/database.dart';
 
-class DataEntry extends StatefulWidget {
-  const DataEntry({Key? key}) : super(key: key);
+class UpdateHelper extends StatefulWidget {
+  const UpdateHelper({Key? key}) : super(key: key);
 
   @override
-  State<DataEntry> createState() => _DataEntryState();
+  State<UpdateHelper> createState() => _UpdateHelperState();
 }
 
-class _DataEntryState extends State<DataEntry> {
+class _UpdateHelperState extends State<UpdateHelper> {
   final _formKey = GlobalKey<FormState>();
 
   String? selectedCategory;
@@ -44,6 +44,20 @@ class _DataEntryState extends State<DataEntry> {
             ),
           ),
         ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 15),
+            child: IconButton(
+              icon: const Icon(Icons.delete),
+              color: kButtonColor1,
+              iconSize: 31,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HomePage()),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Form(
         key: _formKey,
@@ -54,7 +68,7 @@ class _DataEntryState extends State<DataEntry> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Add Product',
+                  'Edit Product',
                   style: TextStyle(
                     color: kTextColor2,
                     fontSize: 30,

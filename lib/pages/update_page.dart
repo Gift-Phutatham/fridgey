@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/data_entry.dart';
+import '../components/update_helper.dart';
 
 class UpdatePage extends StatefulWidget {
   const UpdatePage({Key? key}) : super(key: key);
@@ -12,6 +12,6 @@ class UpdatePage extends StatefulWidget {
 class _UpdatePageState extends State<UpdatePage> {
   @override
   Widget build(BuildContext context) {
-    return const DataEntry();
+    return const UpdateHelper();
   }
 }
