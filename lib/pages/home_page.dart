@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../components/categories.dart';
 import '../components/product_list.dart';
 import '../constants.dart';
 import '../pages/create_page.dart';
@@ -32,11 +31,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Column(children: const <Widget>[
-        Categories(),
-        SizedBox(height: 3),
-        Expanded(child: ProductList())
-      ]),
+      body: const ProductList(),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 35),
         child: FloatingActionButton(
