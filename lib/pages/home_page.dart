@@ -37,13 +37,16 @@ class _HomePageState extends State<HomePage> {
         SizedBox(height: 3),
         Expanded(child: ProductList())
       ]),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const CreatePage()),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 35),
+        child: FloatingActionButton(
+          child: const Icon(Icons.add),
+          backgroundColor: kButtonColor1,
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const CreatePage()),
+          ),
         ),
-        backgroundColor: kButtonColor1,
-        child: const Icon(Icons.add),
       ),
     );
   }
