@@ -28,6 +28,15 @@ class _UpdatePageState extends State<UpdatePage> {
   final units = getUnits();
 
   @override
+  void initState() {
+    super.initState();
+    _productName.text = widget.product.productName;
+    _quantity.text = widget.product.quantity.toString();
+    selectedCategory = widget.product.category;
+    selectedUnit = widget.product.unit;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -124,7 +133,7 @@ class _UpdatePageState extends State<UpdatePage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        addProduct();
+                        editProduct();
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (_) => const HomePage()),
@@ -218,6 +227,7 @@ class _UpdatePageState extends State<UpdatePage> {
           dropdownDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
           ),
+          value: widget.product.category,
           items: categories
               .map((item) => DropdownMenuItem<String>(
                     value: item,
@@ -290,6 +300,7 @@ class _UpdatePageState extends State<UpdatePage> {
             dropdownDecoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
             ),
+            value: widget.product.unit,
             items: units
                 .map((item) => DropdownMenuItem<String>(
                       value: item,
@@ -318,13 +329,14 @@ class _UpdatePageState extends State<UpdatePage> {
     );
   }
 
-  Future addProduct() async {
+  Future editProduct() async {
     final product = Product(
+      id: widget.product.id,
       productName: _productName.text,
       category: selectedCategory.toString(),
       quantity: int.parse(_quantity.text),
       unit: selectedUnit.toString(),
     );
-    await FridgeyDb.instance.createProduct(product);
+    await FridgeyDb.instance.updateProduct(product);
   }
 }
