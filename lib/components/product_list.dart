@@ -104,7 +104,8 @@ class _ProductListState extends State<ProductList> {
               ),
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const UpdatePage()),
+                MaterialPageRoute(
+                    builder: (_) => UpdatePage(product: snapshot.data[index])),
               ),
             ),
           );

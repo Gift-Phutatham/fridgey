@@ -74,7 +74,7 @@ class FridgeyDb {
     );
   }
 
-  Future<int> deleteProduct(int id) async {
+  Future<int> deleteProduct(int? id) async {
     final db = await instance.database;
     return await db.delete(
       table,
