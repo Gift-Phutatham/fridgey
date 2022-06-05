@@ -65,7 +65,7 @@ class _CreateHelperState extends State<CreateHelper> {
                   'Product',
                   _productName,
                   TextInputType.text,
-                  'Enter Your Product.',
+                  'Enter Your Product',
                 ),
                 getCategoryDropdownFormField(
                   'Category',

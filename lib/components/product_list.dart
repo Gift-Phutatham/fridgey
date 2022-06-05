@@ -70,6 +70,10 @@ class _ProductListState extends State<ProductList> {
                   } else {
                     products = FridgeyDb.instance.readProducts();
                   }
+                  List<Product> x = await products;
+                  x.forEach((element) {
+                    print(element);
+                  });
                   setState(() {
                     myIndex = index;
                     products = products;
@@ -163,7 +167,9 @@ class _ProductListState extends State<ProductList> {
               } else if (!snapshot.hasData) {
                 return const Text('No data');
               } else {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(
+                  child: CircularProgressIndicator(),
+                ); // fix this
               }
             },
           ),

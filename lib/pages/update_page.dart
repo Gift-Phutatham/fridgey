@@ -93,7 +93,7 @@ class _UpdatePageState extends State<UpdatePage> {
                   'Product',
                   _productName,
                   TextInputType.text,
-                  'Enter Your Product.',
+                  'Enter Your Product',
                 ),
                 getCategoryDropdownFormField(
                   'Category',
