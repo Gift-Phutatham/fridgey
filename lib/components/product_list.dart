@@ -70,10 +70,6 @@ class _ProductListState extends State<ProductList> {
                   } else {
                     products = FridgeyDb.instance.readProducts();
                   }
-                  List<Product> x = await products;
-                  x.forEach((element) {
-                    print(element);
-                  });
                   setState(() {
                     myIndex = index;
                     products = products;
