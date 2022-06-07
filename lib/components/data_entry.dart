@@ -25,14 +25,14 @@ class DataEntry extends StatefulWidget {
 class _DataEntryState extends State<DataEntry> {
   final _formKey = GlobalKey<FormState>();
 
-  String? selectedCategory;
-  String? selectedUnit;
+  final categories = getCategories();
+  final units = getUnits();
 
   final TextEditingController _productName = TextEditingController();
   final TextEditingController _quantity = TextEditingController();
 
-  final categories = getCategories();
-  final units = getUnits();
+  String? selectedCategory;
+  String? selectedUnit;
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _DataEntryState extends State<DataEntry> {
           ),
         ),
         actions: widget.kind == 1
-            ? [
+            ? <Widget>[
                 Container(
                   margin: const EdgeInsets.only(right: 15),
                   child: IconButton(
@@ -91,7 +91,7 @@ class _DataEntryState extends State<DataEntry> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
                   widget.title,
                   style: const TextStyle(
@@ -110,23 +110,23 @@ class _DataEntryState extends State<DataEntry> {
                   'Category',
                   'Select Your Category',
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: kWidthHeight),
                 Row(
-                  children: [
+                  children: <Widget>[
                     getQuantityTextFormField(
                       'Quantity',
                       _quantity,
                       TextInputType.number,
                       'Quantity',
                     ),
-                    const SizedBox(width: 30),
+                    const SizedBox(width: kWidthHeight),
                     getUnitDropdownFormField(
                       'Unit',
                       'Unit',
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: kWidthHeight),
                 Center(
                   child: ElevatedButton(
                     child: const Text(
@@ -145,7 +145,7 @@ class _DataEntryState extends State<DataEntry> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         if (widget.kind == 1) {
-                          editProduct();
+                          updateProduct();
                         } else {
                           addProduct();
                         }
@@ -193,7 +193,7 @@ class _DataEntryState extends State<DataEntry> {
       ),
       validator: (String? value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter some text';
+          return kRequiredText;
         }
         return null;
       },
@@ -203,8 +203,8 @@ class _DataEntryState extends State<DataEntry> {
   Widget getProductTextFormField(text, controller, textInputType, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 30),
+      children: <Widget>[
+        const SizedBox(height: kWidthHeight),
         getText(text),
         const SizedBox(height: 3),
         getTextFormField(controller, textInputType, hintText),
@@ -215,8 +215,8 @@ class _DataEntryState extends State<DataEntry> {
   Widget getCategoryDropdownFormField(text, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 30),
+      children: <Widget>[
+        const SizedBox(height: kWidthHeight),
         getText(text),
         const SizedBox(height: 3),
         DropdownButtonFormField2(
@@ -256,7 +256,7 @@ class _DataEntryState extends State<DataEntry> {
               .toList(),
           validator: (value) {
             if (value == null) {
-              return 'Please select category.';
+              return kRequiredText;
             }
             return null;
           },
@@ -273,7 +273,7 @@ class _DataEntryState extends State<DataEntry> {
   Widget getQuantityTextFormField(text, controller, textInputType, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         getText(text),
         const SizedBox(height: 3),
         SizedBox(
@@ -287,7 +287,7 @@ class _DataEntryState extends State<DataEntry> {
   Widget getUnitDropdownFormField(text, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         getText(text),
         const SizedBox(height: 3),
         SizedBox(
@@ -317,19 +317,21 @@ class _DataEntryState extends State<DataEntry> {
             ),
             value: widget.kind == 1 ? widget.product?.unit : null,
             items: units
-                .map((item) => DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: const TextStyle(
-                          fontSize: 14,
-                        ),
+                .map(
+                  (item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontSize: 14,
                       ),
-                    ))
+                    ),
+                  ),
+                )
                 .toList(),
             validator: (value) {
               if (value == null) {
-                return 'Please select unit.';
+                return kRequiredText;
               }
               return null;
             },
@@ -354,7 +356,7 @@ class _DataEntryState extends State<DataEntry> {
     await FridgeyDb.instance.createProduct(product);
   }
 
-  Future editProduct() async {
+  Future updateProduct() async {
     final product = Product(
       id: widget.product?.id,
       productName: _productName.text,

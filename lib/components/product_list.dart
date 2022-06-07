@@ -14,17 +14,14 @@ class ProductList extends StatefulWidget {
 
 class _ProductListState extends State<ProductList> {
   int myIndex = 0;
-  final allCategories = getAllCategories();
 
   late Future<List<Product>> products;
+
+  final allCategories = getAllCategories();
 
   @override
   void initState() {
     super.initState();
-    refreshProducts();
-  }
-
-  void refreshProducts() async {
     setState(() {
       products = FridgeyDb.instance.readProducts();
     });
@@ -33,7 +30,7 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           child: SizedBox(
@@ -45,7 +42,7 @@ class _ProductListState extends State<ProductList> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 11),
                   child: Column(
-                    children: [
+                    children: <Widget>[
                       Text(
                         allCategories[index],
                         style: TextStyle(
@@ -66,7 +63,7 @@ class _ProductListState extends State<ProductList> {
                 onTap: () async {
                   if (allCategories[index] != 'All') {
                     products = FridgeyDb.instance
-                        .getProductByCategory(allCategories[index]);
+                        .getProductsByCategory(allCategories[index]);
                   } else {
                     products = FridgeyDb.instance.readProducts();
                   }
@@ -89,21 +86,15 @@ class _ProductListState extends State<ProductList> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (item, index) => GestureDetector(
                     child: Container(
-                      margin: const EdgeInsets.only(
-                        top: 10.0,
-                        right: 15.0,
-                      ),
+                      margin: const EdgeInsets.only(top: 10.0, right: 15.0),
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 25.0,
-                        vertical: 12.0,
-                      ),
+                          horizontal: 25.0, vertical: 12.0),
                       decoration: const BoxDecoration(
                         color: kBackgroundColor1,
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0),
-                        ),
-                        boxShadow: [
+                            topRight: Radius.circular(20.0),
+                            bottomRight: Radius.circular(20.0)),
+                        boxShadow: <BoxShadow>[
                           BoxShadow(
                             color: Colors.grey,
                             blurRadius: 5,
@@ -161,11 +152,9 @@ class _ProductListState extends State<ProductList> {
                   ),
                 );
               } else if (!snapshot.hasData) {
-                return const Text('No data');
+                return const Text('No data available');
               } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                ); // fix this
+                return const Center(child: CircularProgressIndicator());
               }
             },
           ),

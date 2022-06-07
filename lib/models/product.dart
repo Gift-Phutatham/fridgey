@@ -6,7 +6,7 @@ class DbFields {
     productName,
     category,
     quantity,
-    unit
+    unit,
   ];
 
   static const String id = '_id';
