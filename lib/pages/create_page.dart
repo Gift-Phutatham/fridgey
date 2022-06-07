@@ -8,7 +8,7 @@ class CreatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const DataEntry(
-      kind: 0,
+      isUpdatePage: 0,
       title: 'Add Product',
     );
   }

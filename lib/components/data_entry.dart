@@ -7,13 +7,13 @@ import '../pages/home_page.dart';
 import '../sqflite/database.dart';
 
 class DataEntry extends StatefulWidget {
-  final int kind;
+  final int isUpdatePage;
   final String title;
   final Product? product;
 
   const DataEntry({
     Key? key,
-    required this.kind,
+    required this.isUpdatePage,
     required this.title,
     this.product,
   }) : super(key: key);
@@ -23,6 +23,10 @@ class DataEntry extends StatefulWidget {
 }
 
 class _DataEntryState extends State<DataEntry> {
+  static const space1 = 30.0;
+  static const space2 = 3.0;
+  static const requiredText = "This is required.";
+
   final _formKey = GlobalKey<FormState>();
 
   final categories = getCategories();
@@ -37,7 +41,7 @@ class _DataEntryState extends State<DataEntry> {
   @override
   void initState() {
     super.initState();
-    if (widget.kind == 1) {
+    if (widget.isUpdatePage == 1) {
       _productName.text = widget.product!.productName;
       _quantity.text = widget.product!.quantity.toString();
       selectedCategory = widget.product!.category;
@@ -64,7 +68,7 @@ class _DataEntryState extends State<DataEntry> {
             ),
           ),
         ),
-        actions: widget.kind == 1
+        actions: widget.isUpdatePage == 1
             ? <Widget>[
                 Container(
                   margin: const EdgeInsets.only(right: 15),
@@ -100,8 +104,10 @@ class _DataEntryState extends State<DataEntry> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                getProductTextFormField(
-                  'Product',
+                const SizedBox(height: space1),
+                getText('Product'),
+                const SizedBox(height: space2),
+                getTextFormField(
                   _productName,
                   TextInputType.text,
                   'Enter Your Product',
@@ -110,23 +116,32 @@ class _DataEntryState extends State<DataEntry> {
                   'Category',
                   'Select Your Category',
                 ),
-                const SizedBox(height: kWidthHeight),
+                const SizedBox(height: space1),
                 Row(
                   children: <Widget>[
-                    getQuantityTextFormField(
-                      'Quantity',
-                      _quantity,
-                      TextInputType.number,
-                      'Quantity',
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        getText('Quantity'),
+                        const SizedBox(height: space2),
+                        SizedBox(
+                          width: 150,
+                          child: getTextFormField(
+                            _quantity,
+                            TextInputType.number,
+                            'Quantity',
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: kWidthHeight),
+                    const SizedBox(width: space1),
                     getUnitDropdownFormField(
                       'Unit',
                       'Unit',
                     ),
                   ],
                 ),
-                const SizedBox(height: kWidthHeight),
+                const SizedBox(height: space1),
                 Center(
                   child: ElevatedButton(
                     child: const Text(
@@ -144,7 +159,7 @@ class _DataEntryState extends State<DataEntry> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        if (widget.kind == 1) {
+                        if (widget.isUpdatePage == 1) {
                           updateProduct();
                         } else {
                           addProduct();
@@ -181,34 +196,18 @@ class _DataEntryState extends State<DataEntry> {
       controller: controller,
       keyboardType: textInputType,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
-        ),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         hintText: hintText,
         hintStyle: const TextStyle(fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
       ),
       validator: (String? value) {
         if (value == null || value.isEmpty) {
-          return kRequiredText;
+          return requiredText;
         }
         return null;
       },
-    );
-  }
-
-  Widget getProductTextFormField(text, controller, textInputType, hintText) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        const SizedBox(height: kWidthHeight),
-        getText(text),
-        const SizedBox(height: 3),
-        getTextFormField(controller, textInputType, hintText),
-      ],
     );
   }
 
@@ -216,16 +215,14 @@ class _DataEntryState extends State<DataEntry> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: kWidthHeight),
+        const SizedBox(height: space1),
         getText(text),
-        const SizedBox(height: 3),
+        const SizedBox(height: space2),
         DropdownButtonFormField2(
           decoration: InputDecoration(
             isDense: true,
             contentPadding: EdgeInsets.zero,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
           ),
           isExpanded: true,
           hint: Text(
@@ -239,10 +236,9 @@ class _DataEntryState extends State<DataEntry> {
           iconSize: 30,
           buttonHeight: 60,
           buttonPadding: const EdgeInsets.only(left: 20, right: 10),
-          dropdownDecoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          value: widget.kind == 1 ? widget.product?.category : null,
+          dropdownDecoration:
+              BoxDecoration(borderRadius: BorderRadius.circular(15)),
+          value: widget.isUpdatePage == 1 ? widget.product?.category : null,
           items: categories
               .map((item) => DropdownMenuItem<String>(
                     value: item,
@@ -256,7 +252,7 @@ class _DataEntryState extends State<DataEntry> {
               .toList(),
           validator: (value) {
             if (value == null) {
-              return kRequiredText;
+              return requiredText;
             }
             return null;
           },
@@ -270,35 +266,20 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Widget getQuantityTextFormField(text, controller, textInputType, hintText) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        getText(text),
-        const SizedBox(height: 3),
-        SizedBox(
-          width: 150,
-          child: getTextFormField(controller, textInputType, hintText),
-        ),
-      ],
-    );
-  }
-
   Widget getUnitDropdownFormField(text, hintText) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         getText(text),
-        const SizedBox(height: 3),
+        const SizedBox(height: space2),
         SizedBox(
           width: 150,
           child: DropdownButtonFormField2(
             decoration: InputDecoration(
               isDense: true,
               contentPadding: EdgeInsets.zero,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
             ),
             isExpanded: true,
             hint: Text(
@@ -312,10 +293,9 @@ class _DataEntryState extends State<DataEntry> {
             iconSize: 30,
             buttonHeight: 60,
             buttonPadding: const EdgeInsets.only(left: 20, right: 10),
-            dropdownDecoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            value: widget.kind == 1 ? widget.product?.unit : null,
+            dropdownDecoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(15)),
+            value: widget.isUpdatePage == 1 ? widget.product?.unit : null,
             items: units
                 .map(
                   (item) => DropdownMenuItem<String>(
@@ -331,7 +311,7 @@ class _DataEntryState extends State<DataEntry> {
                 .toList(),
             validator: (value) {
               if (value == null) {
-                return kRequiredText;
+                return requiredText;
               }
               return null;
             },

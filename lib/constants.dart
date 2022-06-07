@@ -7,8 +7,3 @@ const kTextColor2 = Color(0xFF1C1C1C);
 const kTextColor3 = Color(0xFF343434);
 const kTextColor4 = Color(0xFF828282);
 const kButtonColor1 = Color(0xFF64B5AC);
-
-const kPadding = 20.0;
-const kWidthHeight = 30.0;
-
-const kRequiredText = "This is required.";

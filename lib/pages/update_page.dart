@@ -11,7 +11,7 @@ class UpdatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DataEntry(
-      kind: 1,
+      isUpdatePage: 1,
       title: 'Edit Product',
       product: product,
     );

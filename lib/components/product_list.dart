@@ -13,6 +13,8 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
+  static const padding = 20.0;
+
   int myIndex = 0;
 
   late Future<List<Product>> products;
@@ -51,7 +53,7 @@ class _ProductListState extends State<ProductList> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: kPadding / 4),
+                        margin: const EdgeInsets.only(top: padding / 4),
                         height: 3,
                         width: 50,
                         color:
