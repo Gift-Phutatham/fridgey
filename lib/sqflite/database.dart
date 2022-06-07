@@ -4,11 +4,11 @@ import 'package:sqflite/sqflite.dart';
 import '../models/product.dart';
 
 class FridgeyDb {
+  FridgeyDb._init();
+
   static final FridgeyDb instance = FridgeyDb._init();
 
   static Database? _database;
-
-  FridgeyDb._init();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -19,22 +19,24 @@ class FridgeyDb {
   Future<Database> _initDb(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
-    return await openDatabase(path, version: 1, onCreate: _createDb);
-  }
-
-  Future _createDb(Database db, int version) async {
-    const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
-    const textType = 'TEXT NOT NULL';
-    const intType = 'INTEGER NOT NULL';
-    await db.execute('''
-      CREATE TABLE $table ( 
-        ${DbFields.id} $idType, 
-        ${DbFields.productName} $textType,
-        ${DbFields.category} $textType,
-        ${DbFields.quantity} $intType,
-        ${DbFields.unit} $textType
-      )
-    ''');
+    return await openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database db, int version) async {
+        const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+        const textType = 'TEXT NOT NULL';
+        const intType = 'INTEGER NOT NULL';
+        await db.execute('''
+          CREATE TABLE $table ( 
+            ${DbFields.id} $idType, 
+            ${DbFields.productName} $textType,
+            ${DbFields.category} $textType,
+            ${DbFields.quantity} $intType,
+            ${DbFields.unit} $textType
+          )
+        ''');
+      },
+    );
   }
 
   Future<int> createProduct(Product product) async {
