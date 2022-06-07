@@ -151,10 +151,8 @@ class _ProductListState extends State<ProductList> {
                     ),
                   ),
                 );
-              } else if (!snapshot.hasData) {
-                return const Text('No data available');
               } else {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(child: Text('No data available'));
               }
             },
           ),
