@@ -115,6 +115,7 @@ class _DataEntryState extends State<DataEntry> {
                 getCategoryDropdownFormField(
                   'Category',
                   'Select Your Category',
+                  categories,
                 ),
                 const SizedBox(height: space1),
                 Row(
@@ -138,6 +139,7 @@ class _DataEntryState extends State<DataEntry> {
                     getUnitDropdownFormField(
                       'Unit',
                       'Unit',
+                      units,
                     ),
                   ],
                 ),
@@ -211,7 +213,7 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Widget getCategoryDropdownFormField(text, hintText) {
+  Widget getCategoryDropdownFormField(text, hintText, items) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -239,7 +241,7 @@ class _DataEntryState extends State<DataEntry> {
           dropdownDecoration:
               BoxDecoration(borderRadius: BorderRadius.circular(15)),
           value: widget.isUpdatePage == 1 ? widget.product?.category : null,
-          items: categories
+          items: items
               .map<DropdownMenuItem<String>>((item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(
@@ -266,7 +268,7 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Widget getUnitDropdownFormField(text, hintText) {
+  Widget getUnitDropdownFormField(text, hintText, items) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -296,7 +298,7 @@ class _DataEntryState extends State<DataEntry> {
             dropdownDecoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(15)),
             value: widget.isUpdatePage == 1 ? widget.product?.unit : null,
-            items: units
+            items: items
                 .map<DropdownMenuItem<String>>(
                   (item) => DropdownMenuItem<String>(
                     value: item,
