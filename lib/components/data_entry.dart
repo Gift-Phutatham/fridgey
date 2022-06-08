@@ -240,7 +240,7 @@ class _DataEntryState extends State<DataEntry> {
               BoxDecoration(borderRadius: BorderRadius.circular(15)),
           value: widget.isUpdatePage == 1 ? widget.product?.category : null,
           items: categories
-              .map((item) => DropdownMenuItem<String>(
+              .map<DropdownMenuItem<String>>((item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(
                       item,
@@ -297,7 +297,7 @@ class _DataEntryState extends State<DataEntry> {
                 BoxDecoration(borderRadius: BorderRadius.circular(15)),
             value: widget.isUpdatePage == 1 ? widget.product?.unit : null,
             items: units
-                .map(
+                .map<DropdownMenuItem<String>>(
                   (item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(
