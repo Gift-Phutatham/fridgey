@@ -35,6 +35,12 @@ class FridgeyDb {
             ${DbFields.unit} $textType
           )
         ''');
+        await db.execute('''
+          CREATE TABLE $table2 ( 
+            ${DbFields2.id} $idType, 
+            ${DbFields2.shoppingItem} $textType
+          )
+        ''');
       },
     );
   }
@@ -44,24 +50,20 @@ class FridgeyDb {
     return await db.insert(table, product.toJson());
   }
 
-  Future<Product> readProduct(int id) async {
+  Future<int> createShoppingList(ShoppingList shoppingList) async {
     final db = await instance.database;
-    final maps = await db.query(
-      table,
-      columns: DbFields.values,
-      where: '${DbFields.id} = ?',
-      whereArgs: [id],
-    );
-    if (maps.isNotEmpty) {
-      return Product.fromJson(maps.first);
-    } else {
-      throw Exception('ID $id not found');
-    }
+    return await db.insert(table2, shoppingList.toJson());
   }
 
   Future<List<Product>> readProducts() async {
     final db = await instance.database;
     final result = await db.query(table, orderBy: DbFields.productName);
+    return result.map((json) => Product.fromJson(json)).toList();
+  }
+
+  Future<List<Product>> readShoppingList() async {
+    final db = await instance.database;
+    final result = await db.query(table2, orderBy: DbFields2.shoppingItem);
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
@@ -80,6 +82,15 @@ class FridgeyDb {
     return await db.delete(
       table,
       where: '${DbFields.id} = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<int> deleteShoppingList(int? id) async {
+    final db = await instance.database;
+    return await db.delete(
+      table2,
+      where: '${DbFields2.id} = ?',
       whereArgs: [id],
     );
   }

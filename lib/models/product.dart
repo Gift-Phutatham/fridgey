@@ -1,4 +1,5 @@
 const String table = 'fridgey';
+const String table2 = 'fridgey2';
 
 class DbFields {
   static final List<String> values = [
@@ -14,6 +15,16 @@ class DbFields {
   static const String category = 'category';
   static const String quantity = 'quantity';
   static const String unit = 'unit';
+}
+
+class DbFields2 {
+  static final List<String> values = [
+    id,
+    shoppingItem,
+  ];
+
+  static const String id = '_id';
+  static const String shoppingItem = 'shoppingItem';
 }
 
 class Product {
@@ -50,6 +61,31 @@ class Product {
   @override
   String toString() {
     return 'Product(Id: $id, Product name: $productName, Category: $category, Quantity: $quantity, Unit: $unit)';
+  }
+}
+
+class ShoppingList {
+  final int? id;
+  final String shoppingItem;
+
+  ShoppingList({
+    this.id,
+    required this.shoppingItem,
+  });
+
+  Map<String, Object?> toJson() => {
+        DbFields2.id: id,
+        DbFields2.shoppingItem: shoppingItem,
+      };
+
+  static ShoppingList fromJson(Map<String, Object?> json) => ShoppingList(
+        id: json[DbFields2.id] as int?,
+        shoppingItem: json[DbFields2.shoppingItem] as String,
+      );
+
+  @override
+  String toString() {
+    return 'ShoppingList(Id: $id, Shopping Item: $shoppingItem)';
   }
 }
 
