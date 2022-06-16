@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../database/models.dart';
 import '../database/sqflite.dart';
-import '../pages/home_page.dart';
+import '../pages/product_list_page.dart';
 
 class DataEntry extends StatefulWidget {
   final int isUpdatePage;
@@ -64,7 +64,7 @@ class _DataEntryState extends State<DataEntry> {
             iconSize: 28,
             onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const HomePage()),
+              MaterialPageRoute(builder: (_) => const ProductListPage()),
             ),
           ),
         ),
@@ -80,7 +80,8 @@ class _DataEntryState extends State<DataEntry> {
                       FridgeyDb.instance.deleteProduct(widget.product?.id);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const HomePage()),
+                        MaterialPageRoute(
+                            builder: (_) => const ProductListPage()),
                       );
                     },
                   ),
@@ -168,7 +169,8 @@ class _DataEntryState extends State<DataEntry> {
                         }
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => const HomePage()),
+                          MaterialPageRoute(
+                              builder: (_) => const ProductListPage()),
                         );
                       }
                     },
