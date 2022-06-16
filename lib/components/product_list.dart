@@ -154,7 +154,7 @@ class _ProductListState extends State<ProductList> {
                   ),
                 );
               } else {
-                return const Center(child: Text('No data available'));
+                return const Center(child: CircularProgressIndicator());
               }
             },
           ),
