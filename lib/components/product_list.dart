@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import '../models/product.dart';
+import '../database/models.dart';
+import '../database/sqflite.dart';
 import '../pages/update_page.dart';
-import '../sqflite/database.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({Key? key}) : super(key: key);

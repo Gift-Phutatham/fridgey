@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../models/product.dart';
+import 'models.dart';
 
 class FridgeyDb {
   FridgeyDb._init();

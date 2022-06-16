@@ -2,9 +2,9 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import '../models/product.dart';
+import '../database/models.dart';
+import '../database/sqflite.dart';
 import '../pages/home_page.dart';
-import '../sqflite/database.dart';
 
 class DataEntry extends StatefulWidget {
   final int isUpdatePage;

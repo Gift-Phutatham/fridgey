@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/data_entry.dart';
-import '../models/product.dart';
+import '../database/models.dart';
 
 class UpdatePage extends StatelessWidget {
   final Product product;
