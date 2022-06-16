@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:fridgey/components/main_template.dart';
 
+import '../components/main_template.dart';
 import '../constants.dart';
 import '../database/models.dart';
 import '../database/sqflite.dart';
