@@ -100,11 +100,7 @@ class FridgeyDb {
 
   Future<int> deleteShoppingList(int? id) async {
     final db = await instance.database;
-    return await db.delete(
-      table2,
-      where: '${DbFields2.id} = ?',
-      whereArgs: [id],
-    );
+    return await db.delete(table2);
   }
 
   Future<List<Product>> getProductsByCategory(String category) async {

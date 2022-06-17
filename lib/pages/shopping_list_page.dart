@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fridgey/components/main_template.dart';
 import 'package:fridgey/database/models.dart';
 
 import '../components/shopping_list.dart';
@@ -88,12 +89,10 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         if (isAddButton) {
           if (_formKey.currentState!.validate()) {
             addShoppingItem();
-            Navigator.of(context).pop();
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //       builder: (_) => const ShoppingListPage()),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const MainTemplate(myIndex: 1)),
+            );
           }
         } else {
           Navigator.of(context).pop();
