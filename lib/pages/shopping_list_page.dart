@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../components/main_template.dart';
 import '../components/shopping_list.dart';
 import '../constants.dart';
-import '../database/models.dart';
+import '../database/shopping_item_model.dart';
 import '../database/sqflite.dart';
 
 class ShoppingListPage extends StatefulWidget {

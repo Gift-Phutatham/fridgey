@@ -1,7 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'models.dart';
+import 'product_model.dart';
+import 'shopping_item_model.dart';
 
 class FridgeyDb {
   FridgeyDb._init();
@@ -28,7 +29,7 @@ class FridgeyDb {
         const intType = 'INTEGER NOT NULL';
         const intTypeWithDefault = 'INTEGER NOT NULL DEFAULT 0';
         await db.execute('''
-          CREATE TABLE $table ( 
+          CREATE TABLE $productTable ( 
             ${ProductFields.id} $idType, 
             ${ProductFields.productName} $textType,
             ${ProductFields.category} $textType,
@@ -37,7 +38,7 @@ class FridgeyDb {
           )
         ''');
         await db.execute('''
-          CREATE TABLE $table2 ( 
+          CREATE TABLE $shoppingItemTable ( 
             ${ShoppingItemFields.id} $idType, 
             ${ShoppingItemFields.shoppingItemName} $textType,
             ${ShoppingItemFields.isChecked} $intTypeWithDefault
@@ -49,31 +50,32 @@ class FridgeyDb {
 
   Future<int> createProduct(Product product) async {
     final db = await instance.database;
-    return await db.insert(table, product.toJson());
+    return await db.insert(productTable, product.toJson());
   }
 
   Future<int> createShoppingItem(ShoppingItem shoppingList) async {
     final db = await instance.database;
-    return await db.insert(table2, shoppingList.toJson());
+    return await db.insert(shoppingItemTable, shoppingList.toJson());
   }
 
   Future<List<Product>> readProducts() async {
     final db = await instance.database;
-    final result = await db.query(table, orderBy: ProductFields.productName);
+    final result =
+        await db.query(productTable, orderBy: ProductFields.productName);
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
   Future<List<ShoppingItem>> readShoppingItems() async {
     final db = await instance.database;
-    final result =
-        await db.query(table2, orderBy: ShoppingItemFields.shoppingItemName);
+    final result = await db.query(shoppingItemTable,
+        orderBy: ShoppingItemFields.shoppingItemName);
     return result.map((json) => ShoppingItem.fromJson(json)).toList();
   }
 
   Future<int> updateProduct(Product product) async {
     final db = await instance.database;
     return db.update(
-      table,
+      productTable,
       product.toJson(),
       where: '${ProductFields.id} = ?',
       whereArgs: [product.id],
@@ -83,7 +85,7 @@ class FridgeyDb {
   Future<int> updateShoppingItem(ShoppingItem shoppingItem) async {
     final db = await instance.database;
     return db.update(
-      table2,
+      shoppingItemTable,
       shoppingItem.toJson(),
       where: '${ShoppingItemFields.id} = ?',
       whereArgs: [shoppingItem.id],
@@ -93,7 +95,7 @@ class FridgeyDb {
   Future<int> deleteProduct(int? id) async {
     final db = await instance.database;
     return await db.delete(
-      table,
+      productTable,
       where: '${ProductFields.id} = ?',
       whereArgs: [id],
     );
@@ -101,13 +103,13 @@ class FridgeyDb {
 
   Future<int> deleteShoppingItems() async {
     final db = await instance.database;
-    return await db.delete(table2);
+    return await db.delete(shoppingItemTable);
   }
 
   Future<List<Product>> getProductsByCategory(String category) async {
     final db = await instance.database;
     final result = await db.rawQuery(
-      'SELECT * FROM $table WHERE category=? ORDER BY ${ProductFields.productName}',
+      'SELECT * FROM $productTable WHERE category=? ORDER BY ${ProductFields.productName}',
       [category],
     );
     return result.map((json) => Product.fromJson(json)).toList();

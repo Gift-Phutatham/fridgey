@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import '../database/models.dart';
+import '../database/product_model.dart';
 import '../database/sqflite.dart';
 import '../pages/update_page.dart';
 

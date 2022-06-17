@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../components/main_template.dart';
 import '../constants.dart';
-import '../database/models.dart';
+import '../database/product_model.dart';
 import '../database/sqflite.dart';
 
 class DataEntry extends StatefulWidget {
