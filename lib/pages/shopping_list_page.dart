@@ -83,7 +83,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         primary: backgroundColor,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-        minimumSize: const Size(100, 40),
+        minimumSize: const Size(75, 35),
       ),
       onPressed: () {
         if (isAddButton) {
