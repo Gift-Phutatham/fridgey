@@ -89,6 +89,11 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
           if (_formKey.currentState!.validate()) {
             addShoppingItem();
             Navigator.of(context).pop();
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //       builder: (_) => const ShoppingListPage()),
+            // );
           }
         } else {
           Navigator.of(context).pop();

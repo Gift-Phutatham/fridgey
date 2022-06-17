@@ -1,5 +1,5 @@
-const String table = 'fridgey';
-const String table2 = 'fridgey2';
+const String table = 'product';
+const String table2 = 'shopping';
 
 class DbFields {
   static final List<String> values = [

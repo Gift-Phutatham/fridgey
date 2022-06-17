@@ -26,6 +26,7 @@ class FridgeyDb {
         const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
         const textType = 'TEXT NOT NULL';
         const intType = 'INTEGER NOT NULL';
+        const intTypeWithDefault = 'INTEGER NOT NULL DEFAULT 0';
         await db.execute('''
           CREATE TABLE $table ( 
             ${DbFields.id} $idType, 
@@ -38,8 +39,8 @@ class FridgeyDb {
         await db.execute('''
           CREATE TABLE $table2 ( 
             ${DbFields2.id} $idType, 
-            ${DbFields2.shoppingItemName} $textType
-            ${DbFields2.isChecked} $intType
+            ${DbFields2.shoppingItemName} $textType,
+            ${DbFields2.isChecked} $intTypeWithDefault
           )
         ''');
       },
@@ -62,10 +63,10 @@ class FridgeyDb {
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
-  Future<List<Product>> readShoppingList() async {
+  Future<List<ShoppingItem>> readShoppingList() async {
     final db = await instance.database;
     final result = await db.query(table2, orderBy: DbFields2.shoppingItemName);
-    return result.map((json) => Product.fromJson(json)).toList();
+    return result.map((json) => ShoppingItem.fromJson(json)).toList();
   }
 
   Future<int> updateProduct(Product product) async {
@@ -75,6 +76,16 @@ class FridgeyDb {
       product.toJson(),
       where: '${DbFields.id} = ?',
       whereArgs: [product.id],
+    );
+  }
+
+  Future<int> updateShoppingList(ShoppingItem shoppingItem) async {
+    final db = await instance.database;
+    return db.update(
+      table2,
+      shoppingItem.toJson(),
+      where: '${DbFields2.id} = ?',
+      whereArgs: [shoppingItem.id],
     );
   }
 

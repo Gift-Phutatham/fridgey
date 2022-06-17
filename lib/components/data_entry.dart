@@ -63,7 +63,7 @@ class _DataEntryState extends State<DataEntry> {
             iconSize: 28,
             onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const MainTemplate()),
+              MaterialPageRoute(builder: (_) => const MainTemplate(myIndex: 0)),
             ),
           ),
         ),
@@ -79,7 +79,8 @@ class _DataEntryState extends State<DataEntry> {
                       FridgeyDb.instance.deleteProduct(widget.product?.id);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const MainTemplate()),
+                        MaterialPageRoute(
+                            builder: (_) => const MainTemplate(myIndex: 0)),
                       );
                     },
                   ),
@@ -168,7 +169,7 @@ class _DataEntryState extends State<DataEntry> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => const MainTemplate()),
+                              builder: (_) => const MainTemplate(myIndex: 0)),
                         );
                       }
                     },

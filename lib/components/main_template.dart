@@ -5,7 +5,9 @@ import '../pages/product_list_page.dart';
 import '../pages/shopping_list_page.dart';
 
 class MainTemplate extends StatefulWidget {
-  const MainTemplate({Key? key}) : super(key: key);
+  final int myIndex;
+
+  const MainTemplate({Key? key, required this.myIndex}) : super(key: key);
 
   @override
   State<MainTemplate> createState() => _MainTemplateState();
@@ -13,6 +15,12 @@ class MainTemplate extends StatefulWidget {
 
 class _MainTemplateState extends State<MainTemplate> {
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.myIndex;
+  }
 
   static const List<Widget> _widgetOptions = <Widget>[
     ProductListPage(),
