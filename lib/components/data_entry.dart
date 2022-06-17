@@ -164,7 +164,7 @@ class _DataEntryState extends State<DataEntry> {
                         if (widget.isUpdatePage == 1) {
                           updateProduct();
                         } else {
-                          addProduct();
+                          createProduct();
                         }
                         Navigator.push(
                           context,
@@ -329,7 +329,7 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
-  Future addProduct() async {
+  Future createProduct() async {
     final product = Product(
       productName: _productName.text,
       category: selectedCategory.toString(),

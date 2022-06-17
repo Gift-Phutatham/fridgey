@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fridgey/components/main_template.dart';
-import 'package:fridgey/database/models.dart';
 
+import '../components/main_template.dart';
 import '../constants.dart';
+import '../database/models.dart';
 import '../database/sqflite.dart';
 
 class ShoppingList extends StatefulWidget {
@@ -19,7 +19,7 @@ class _ShoppingListState extends State<ShoppingList> {
   void initState() {
     super.initState();
     setState(() {
-      shoppingItems = FridgeyDb.instance.readShoppingList();
+      shoppingItems = FridgeyDb.instance.readShoppingItems();
     });
   }
 
@@ -75,6 +75,6 @@ class _ShoppingListState extends State<ShoppingList> {
       shoppingItemName: item.shoppingItemName,
       isChecked: isChecked,
     );
-    await FridgeyDb.instance.updateShoppingList(shoppingItem);
+    await FridgeyDb.instance.updateShoppingItem(shoppingItem);
   }
 }

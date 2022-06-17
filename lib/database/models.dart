@@ -1,7 +1,7 @@
 const String table = 'product';
 const String table2 = 'shopping';
 
-class DbFields {
+class ProductFields {
   static final List<String> values = [
     id,
     productName,
@@ -33,19 +33,19 @@ class Product {
   });
 
   Map<String, Object?> toJson() => {
-        DbFields.id: id,
-        DbFields.productName: productName,
-        DbFields.category: category,
-        DbFields.quantity: quantity,
-        DbFields.unit: unit,
+        ProductFields.id: id,
+        ProductFields.productName: productName,
+        ProductFields.category: category,
+        ProductFields.quantity: quantity,
+        ProductFields.unit: unit,
       };
 
   static Product fromJson(Map<String, Object?> json) => Product(
-        id: json[DbFields.id] as int?,
-        productName: json[DbFields.productName] as String,
-        category: json[DbFields.category] as String,
-        quantity: json[DbFields.quantity] as int,
-        unit: json[DbFields.unit] as String,
+        id: json[ProductFields.id] as int?,
+        productName: json[ProductFields.productName] as String,
+        category: json[ProductFields.category] as String,
+        quantity: json[ProductFields.quantity] as int,
+        unit: json[ProductFields.unit] as String,
       );
 
   @override
@@ -54,7 +54,7 @@ class Product {
   }
 }
 
-class DbFields2 {
+class ShoppingItemFields {
   static final List<String> values = [
     id,
     shoppingItemName,
@@ -78,15 +78,15 @@ class ShoppingItem {
   });
 
   Map<String, Object?> toJson() => {
-        DbFields2.id: id,
-        DbFields2.shoppingItemName: shoppingItemName,
-        DbFields2.isChecked: isChecked,
+        ShoppingItemFields.id: id,
+        ShoppingItemFields.shoppingItemName: shoppingItemName,
+        ShoppingItemFields.isChecked: isChecked,
       };
 
   static ShoppingItem fromJson(Map<String, Object?> json) => ShoppingItem(
-        id: json[DbFields2.id] as int?,
-        shoppingItemName: json[DbFields2.shoppingItemName] as String,
-        isChecked: json[DbFields2.isChecked] as int,
+        id: json[ShoppingItemFields.id] as int?,
+        shoppingItemName: json[ShoppingItemFields.shoppingItemName] as String,
+        isChecked: json[ShoppingItemFields.isChecked] as int,
       );
 
   @override

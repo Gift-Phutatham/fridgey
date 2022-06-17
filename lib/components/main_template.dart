@@ -60,7 +60,7 @@ class _MainTemplateState extends State<MainTemplate> {
                       textStyle: const TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      FridgeyDb.instance.deleteShoppingList();
+                      FridgeyDb.instance.deleteShoppingItems();
                       Navigator.push(
                         context,
                         PageRouteBuilder(

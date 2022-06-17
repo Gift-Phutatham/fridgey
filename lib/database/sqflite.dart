@@ -29,18 +29,18 @@ class FridgeyDb {
         const intTypeWithDefault = 'INTEGER NOT NULL DEFAULT 0';
         await db.execute('''
           CREATE TABLE $table ( 
-            ${DbFields.id} $idType, 
-            ${DbFields.productName} $textType,
-            ${DbFields.category} $textType,
-            ${DbFields.quantity} $intType,
-            ${DbFields.unit} $textType
+            ${ProductFields.id} $idType, 
+            ${ProductFields.productName} $textType,
+            ${ProductFields.category} $textType,
+            ${ProductFields.quantity} $intType,
+            ${ProductFields.unit} $textType
           )
         ''');
         await db.execute('''
           CREATE TABLE $table2 ( 
-            ${DbFields2.id} $idType, 
-            ${DbFields2.shoppingItemName} $textType,
-            ${DbFields2.isChecked} $intTypeWithDefault
+            ${ShoppingItemFields.id} $idType, 
+            ${ShoppingItemFields.shoppingItemName} $textType,
+            ${ShoppingItemFields.isChecked} $intTypeWithDefault
           )
         ''');
       },
@@ -52,20 +52,21 @@ class FridgeyDb {
     return await db.insert(table, product.toJson());
   }
 
-  Future<int> createShoppingList(ShoppingItem shoppingList) async {
+  Future<int> createShoppingItem(ShoppingItem shoppingList) async {
     final db = await instance.database;
     return await db.insert(table2, shoppingList.toJson());
   }
 
   Future<List<Product>> readProducts() async {
     final db = await instance.database;
-    final result = await db.query(table, orderBy: DbFields.productName);
+    final result = await db.query(table, orderBy: ProductFields.productName);
     return result.map((json) => Product.fromJson(json)).toList();
   }
 
-  Future<List<ShoppingItem>> readShoppingList() async {
+  Future<List<ShoppingItem>> readShoppingItems() async {
     final db = await instance.database;
-    final result = await db.query(table2, orderBy: DbFields2.shoppingItemName);
+    final result =
+        await db.query(table2, orderBy: ShoppingItemFields.shoppingItemName);
     return result.map((json) => ShoppingItem.fromJson(json)).toList();
   }
 
@@ -74,17 +75,17 @@ class FridgeyDb {
     return db.update(
       table,
       product.toJson(),
-      where: '${DbFields.id} = ?',
+      where: '${ProductFields.id} = ?',
       whereArgs: [product.id],
     );
   }
 
-  Future<int> updateShoppingList(ShoppingItem shoppingItem) async {
+  Future<int> updateShoppingItem(ShoppingItem shoppingItem) async {
     final db = await instance.database;
     return db.update(
       table2,
       shoppingItem.toJson(),
-      where: '${DbFields2.id} = ?',
+      where: '${ShoppingItemFields.id} = ?',
       whereArgs: [shoppingItem.id],
     );
   }
@@ -93,12 +94,12 @@ class FridgeyDb {
     final db = await instance.database;
     return await db.delete(
       table,
-      where: '${DbFields.id} = ?',
+      where: '${ProductFields.id} = ?',
       whereArgs: [id],
     );
   }
 
-  Future<int> deleteShoppingList() async {
+  Future<int> deleteShoppingItems() async {
     final db = await instance.database;
     return await db.delete(table2);
   }
@@ -106,7 +107,7 @@ class FridgeyDb {
   Future<List<Product>> getProductsByCategory(String category) async {
     final db = await instance.database;
     final result = await db.rawQuery(
-      'SELECT * FROM $table WHERE category=? ORDER BY ${DbFields.productName}',
+      'SELECT * FROM $table WHERE category=? ORDER BY ${ProductFields.productName}',
       [category],
     );
     return result.map((json) => Product.fromJson(json)).toList();

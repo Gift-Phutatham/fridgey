@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fridgey/components/main_template.dart';
-import 'package:fridgey/database/models.dart';
 
+import '../components/main_template.dart';
 import '../components/shopping_list.dart';
 import '../constants.dart';
+import '../database/models.dart';
 import '../database/sqflite.dart';
 
 class ShoppingListPage extends StatefulWidget {
@@ -88,7 +88,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
       onPressed: () {
         if (isAddButton) {
           if (_formKey.currentState!.validate()) {
-            addShoppingItem();
+            createShoppingItem();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const MainTemplate(myIndex: 1)),
@@ -101,11 +101,11 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     );
   }
 
-  Future addShoppingItem() async {
+  Future createShoppingItem() async {
     final shoppingItem = ShoppingItem(
       shoppingItemName: _shoppingItemName.text,
       isChecked: 0,
     );
-    await FridgeyDb.instance.createShoppingList(shoppingItem);
+    await FridgeyDb.instance.createShoppingItem(shoppingItem);
   }
 }
