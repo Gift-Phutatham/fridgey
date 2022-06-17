@@ -5,6 +5,7 @@ import '../database/product_model.dart';
 import '../database/sqflite.dart';
 import '../pages/update_page.dart';
 
+/// List all the My Fridge products
 class ProductList extends StatefulWidget {
   const ProductList({Key? key}) : super(key: key);
 
@@ -25,6 +26,7 @@ class _ProductListState extends State<ProductList> {
   void initState() {
     super.initState();
     setState(() {
+      /// Get the list from database
       products = FridgeyDb.instance.readProducts();
     });
   }
@@ -37,6 +39,8 @@ class _ProductListState extends State<ProductList> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           child: SizedBox(
             height: 25,
+
+            /// Category menu
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: allCategories.length,
@@ -109,6 +113,7 @@ class _ProductListState extends State<ProductList> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
+                              /// Display image according to the product's category
                               Image(
                                 image: AssetImage(
                                     getImage(snapshot.data[index].category)),
@@ -118,6 +123,7 @@ class _ProductListState extends State<ProductList> {
                               const SizedBox(width: 23.0),
                               Column(
                                 children: <Widget>[
+                                  /// Display Product Name
                                   Text(
                                     snapshot.data[index].productName,
                                     style: const TextStyle(
@@ -126,6 +132,8 @@ class _ProductListState extends State<ProductList> {
                                     ),
                                   ),
                                   const SizedBox(height: 5.0),
+
+                                  /// Display Quantity and Unit
                                   Text(
                                     '${snapshot.data[index].quantity.toString()} ${snapshot.data[index].unit}',
                                     style: const TextStyle(
@@ -138,6 +146,8 @@ class _ProductListState extends State<ProductList> {
                               ),
                             ],
                           ),
+
+                          /// Edit button for each product
                           const Icon(
                             Icons.edit,
                             color: kButtonColor1,
@@ -145,6 +155,8 @@ class _ProductListState extends State<ProductList> {
                         ],
                       ),
                     ),
+
+                    /// Display Update Page when the row is pressed
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -154,6 +166,7 @@ class _ProductListState extends State<ProductList> {
                   ),
                 );
               } else {
+                /// Loading Indicator
                 return const Center(child: CircularProgressIndicator());
               }
             },

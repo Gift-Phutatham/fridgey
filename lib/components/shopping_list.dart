@@ -5,6 +5,7 @@ import '../constants.dart';
 import '../database/shopping_item_model.dart';
 import '../database/sqflite.dart';
 
+/// List all the shopping items
 class ShoppingList extends StatefulWidget {
   const ShoppingList({Key? key}) : super(key: key);
 
@@ -19,6 +20,7 @@ class _ShoppingListState extends State<ShoppingList> {
   void initState() {
     super.initState();
     setState(() {
+      /// Get the list from database
       shoppingItems = FridgeyDb.instance.readShoppingItems();
     });
   }
@@ -43,9 +45,12 @@ class _ShoppingListState extends State<ShoppingList> {
                             const TextStyle(fontSize: 16, color: kTextColor3),
                       ),
                       activeColor: kButtonColor1,
+
+                      /// Convert int to bool after getting data from the database
                       value: snapshot.data[index].isChecked == 1 ? true : false,
                       onChanged: (bool? value) {
                         setState(() {
+                          /// Convert bool to int before updating the database
                           int isChecked = value! ? 1 : 0;
                           updateShoppingItem(snapshot.data[index], isChecked);
                           Navigator.push(
@@ -64,6 +69,7 @@ class _ShoppingListState extends State<ShoppingList> {
               },
             );
           } else {
+            /// Loading Indicator
             return const Center(child: CircularProgressIndicator());
           }
         });
@@ -75,6 +81,8 @@ class _ShoppingListState extends State<ShoppingList> {
       shoppingItemName: item.shoppingItemName,
       isChecked: isChecked,
     );
+
+    /// Update the database
     await FridgeyDb.instance.updateShoppingItem(shoppingItem);
   }
 }

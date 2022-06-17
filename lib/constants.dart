@@ -8,4 +8,5 @@ const kTextColor3 = Color(0xFF343434);
 const kTextColor4 = Color(0xFF828282);
 const kButtonColor1 = Color(0xFF64B5AC);
 
+/// The warning text for empty field
 const kRequiredText = "This is required.";

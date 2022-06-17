@@ -10,6 +10,7 @@ class UpdatePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// UpdatePage uses DataEntry Component.
     return DataEntry(
       isUpdatePage: 1,
       title: 'Edit Product',

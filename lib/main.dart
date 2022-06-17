@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      /// The Home Page is My Fridge Section.
       home: MainTemplate(myIndex: 0),
     );
   }

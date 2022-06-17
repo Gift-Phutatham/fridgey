@@ -11,6 +11,8 @@ class ProductListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const ProductList(),
+
+      /// Create button using FloatingActionButton
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 35),
         child: FloatingActionButton(
@@ -18,6 +20,8 @@ class ProductListPage extends StatelessWidget {
           backgroundColor: kButtonColor1,
           onPressed: () => Navigator.push(
             context,
+
+            /// Display Create Page when the button is pressed
             MaterialPageRoute(builder: (_) => const CreatePage()),
           ),
         ),

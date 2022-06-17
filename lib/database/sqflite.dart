@@ -28,6 +28,8 @@ class FridgeyDb {
         const textType = 'TEXT NOT NULL';
         const intType = 'INTEGER NOT NULL';
         const intTypeWithDefault = 'INTEGER NOT NULL DEFAULT 0';
+
+        /// Table for My Fridge Section
         await db.execute('''
           CREATE TABLE $productTable ( 
             ${ProductFields.id} $idType, 
@@ -37,6 +39,8 @@ class FridgeyDb {
             ${ProductFields.unit} $textType
           )
         ''');
+
+        /// Table for Shopping List Section
         await db.execute('''
           CREATE TABLE $shoppingItemTable ( 
             ${ShoppingItemFields.id} $idType, 

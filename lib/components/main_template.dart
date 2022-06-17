@@ -5,6 +5,8 @@ import '../database/sqflite.dart';
 import '../pages/product_list_page.dart';
 import '../pages/shopping_list_page.dart';
 
+/// MainTemplate of the application with Title, each page's Body, and BottomNavigationBar
+/// @param myIndex - 0 for My Fridge, 1 for Shopping List
 class MainTemplate extends StatefulWidget {
   final int myIndex;
 
@@ -23,6 +25,7 @@ class _MainTemplateState extends State<MainTemplate> {
     _selectedIndex = widget.myIndex;
   }
 
+  /// Each page's body
   static const List<Widget> _widgetOptions = <Widget>[
     ProductListPage(),
     ShoppingListPage(),
@@ -51,6 +54,8 @@ class _MainTemplateState extends State<MainTemplate> {
             color: kTextColor2,
           ),
         ),
+
+        /// Clear All button for Shopping List
         actions: _selectedIndex == 1
             ? <Widget>[
                 Container(
@@ -85,6 +90,8 @@ class _MainTemplateState extends State<MainTemplate> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
+
+      /// BottomNavigationBar consists of My Fridge and Shopping List Sections
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

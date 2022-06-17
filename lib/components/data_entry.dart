@@ -6,6 +6,10 @@ import '../constants.dart';
 import '../database/product_model.dart';
 import '../database/sqflite.dart';
 
+/// DataEntry for create and update pages.
+/// @param isUpdate - to check whether it is create or update page
+/// @param title - title of the page
+/// @param product - the prefilled form for update page
 class DataEntry extends StatefulWidget {
   final int isUpdatePage;
   final String title;
@@ -40,6 +44,8 @@ class _DataEntryState extends State<DataEntry> {
   @override
   void initState() {
     super.initState();
+
+    /// Prefill the form
     if (widget.isUpdatePage == 1) {
       _productName.text = widget.product!.productName;
       _quantity.text = widget.product!.quantity.toString();
@@ -57,6 +63,8 @@ class _DataEntryState extends State<DataEntry> {
         toolbarHeight: 75,
         leading: Container(
           margin: const EdgeInsets.only(left: 25),
+
+          /// Back button
           child: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             color: kButtonColor1,
@@ -67,6 +75,8 @@ class _DataEntryState extends State<DataEntry> {
             ),
           ),
         ),
+
+        /// Delete button for update page
         actions: widget.isUpdatePage == 1
             ? <Widget>[
                 Container(
@@ -107,11 +117,15 @@ class _DataEntryState extends State<DataEntry> {
                 const SizedBox(height: space1),
                 getText('Product'),
                 const SizedBox(height: space2),
+
+                /// Product name's text form
                 getTextFormField(
                   _productName,
                   TextInputType.text,
                   'Enter Your Product',
                 ),
+
+                /// Category's dropdown
                 getCategoryDropdownFormField(
                   'Category',
                   'Select Your Category',
@@ -127,6 +141,8 @@ class _DataEntryState extends State<DataEntry> {
                         const SizedBox(height: space2),
                         SizedBox(
                           width: 150,
+
+                          /// Quantity's text form
                           child: getTextFormField(
                             _quantity,
                             TextInputType.number,
@@ -136,6 +152,8 @@ class _DataEntryState extends State<DataEntry> {
                       ],
                     ),
                     const SizedBox(width: space1),
+
+                    /// Unit's dropdown
                     getUnitDropdownFormField(
                       'Unit',
                       'Unit',
@@ -145,6 +163,7 @@ class _DataEntryState extends State<DataEntry> {
                 ),
                 const SizedBox(height: space1),
                 Center(
+                  /// Save button
                   child: ElevatedButton(
                     child: const Text(
                       'Save',
@@ -160,6 +179,7 @@ class _DataEntryState extends State<DataEntry> {
                       minimumSize: const Size(100, 40),
                     ),
                     onPressed: () {
+                      /// Check if there exists an empty field
                       if (_formKey.currentState!.validate()) {
                         if (widget.isUpdatePage == 1) {
                           updateProduct();
@@ -329,6 +349,7 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 
+  /// Add to the database
   Future createProduct() async {
     final product = Product(
       productName: _productName.text,
@@ -339,6 +360,7 @@ class _DataEntryState extends State<DataEntry> {
     await FridgeyDb.instance.createProduct(product);
   }
 
+  /// Update the database
   Future updateProduct() async {
     final product = Product(
       id: widget.product?.id,

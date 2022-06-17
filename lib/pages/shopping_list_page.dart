@@ -22,11 +22,15 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const ShoppingList(),
+
+      /// Add Button using FloatingActionButton
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 35),
         child: FloatingActionButton(
           child: const Icon(Icons.add),
           backgroundColor: kButtonColor1,
+
+          /// Display Add Dialog when the button is pressed
           onPressed: () => addDialog(context),
         ),
       ),
@@ -37,6 +41,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
+        /// Add dialog using AlertDialog
         return AlertDialog(
           title: const Text('Add Shopping Item'),
           content: Form(
@@ -51,6 +56,8 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
               ),
+
+              /// Display a warning text if there exists an empty field
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return kRequiredText;
@@ -60,8 +67,11 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
             ),
           ),
           actions: <Widget>[
+            /// Cancel button
             getElevatedButton(
                 false, 'Cancel', kButtonColor1, kBackgroundColor1),
+
+            /// Add button
             getElevatedButton(true, 'Add', kBackgroundColor1, kButtonColor1),
           ],
         );
@@ -86,6 +96,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         minimumSize: const Size(75, 35),
       ),
       onPressed: () {
+        /// Check whether or not the field is empty before adding the shopping item
         if (isAddButton) {
           if (_formKey.currentState!.validate()) {
             createShoppingItem();
@@ -101,9 +112,12 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     );
   }
 
+  /// Add to the database
   Future createShoppingItem() async {
     final shoppingItem = ShoppingItem(
       shoppingItemName: _shoppingItemName.text,
+
+      /// The CheckBox should not be checked when the item is just created.
       isChecked: 0,
     );
     await FridgeyDb.instance.createShoppingItem(shoppingItem);
