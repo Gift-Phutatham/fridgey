@@ -14,7 +14,7 @@ class MainTemplate extends StatefulWidget {
 }
 
 class _MainTemplateState extends State<MainTemplate> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
   @override
   void initState() {
