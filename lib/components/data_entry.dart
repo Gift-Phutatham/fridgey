@@ -25,7 +25,6 @@ class DataEntry extends StatefulWidget {
 class _DataEntryState extends State<DataEntry> {
   static const space1 = 30.0;
   static const space2 = 3.0;
-  static const requiredText = "This is required.";
 
   final _formKey = GlobalKey<FormState>();
 
@@ -207,7 +206,7 @@ class _DataEntryState extends State<DataEntry> {
       ),
       validator: (String? value) {
         if (value == null || value.isEmpty) {
-          return requiredText;
+          return kRequiredText;
         }
         return null;
       },
@@ -255,7 +254,7 @@ class _DataEntryState extends State<DataEntry> {
               .toList(),
           validator: (value) {
             if (value == null) {
-              return requiredText;
+              return kRequiredText;
             }
             return null;
           },
@@ -314,7 +313,7 @@ class _DataEntryState extends State<DataEntry> {
                 .toList(),
             validator: (value) {
               if (value == null) {
-                return requiredText;
+                return kRequiredText;
               }
               return null;
             },

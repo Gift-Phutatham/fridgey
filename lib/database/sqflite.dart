@@ -38,7 +38,8 @@ class FridgeyDb {
         await db.execute('''
           CREATE TABLE $table2 ( 
             ${DbFields2.id} $idType, 
-            ${DbFields2.shoppingItem} $textType
+            ${DbFields2.shoppingItemName} $textType
+            ${DbFields2.isChecked} $intType
           )
         ''');
       },
@@ -50,7 +51,7 @@ class FridgeyDb {
     return await db.insert(table, product.toJson());
   }
 
-  Future<int> createShoppingList(ShoppingList shoppingList) async {
+  Future<int> createShoppingList(ShoppingItem shoppingList) async {
     final db = await instance.database;
     return await db.insert(table2, shoppingList.toJson());
   }
@@ -63,7 +64,7 @@ class FridgeyDb {
 
   Future<List<Product>> readShoppingList() async {
     final db = await instance.database;
-    final result = await db.query(table2, orderBy: DbFields2.shoppingItem);
+    final result = await db.query(table2, orderBy: DbFields2.shoppingItemName);
     return result.map((json) => Product.fromJson(json)).toList();
   }
 

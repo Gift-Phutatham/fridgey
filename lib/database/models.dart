@@ -17,16 +17,6 @@ class DbFields {
   static const String unit = 'unit';
 }
 
-class DbFields2 {
-  static final List<String> values = [
-    id,
-    shoppingItem,
-  ];
-
-  static const String id = '_id';
-  static const String shoppingItem = 'shoppingItem';
-}
-
 class Product {
   final int? id;
   final String productName;
@@ -64,28 +54,44 @@ class Product {
   }
 }
 
-class ShoppingList {
-  final int? id;
-  final String shoppingItem;
+class DbFields2 {
+  static final List<String> values = [
+    id,
+    shoppingItemName,
+    isChecked,
+  ];
 
-  ShoppingList({
+  static const String id = '_id';
+  static const String shoppingItemName = 'shoppingItemName';
+  static const String isChecked = 'isChecked';
+}
+
+class ShoppingItem {
+  final int? id;
+  final String shoppingItemName;
+  final int isChecked;
+
+  ShoppingItem({
     this.id,
-    required this.shoppingItem,
+    required this.shoppingItemName,
+    required this.isChecked,
   });
 
   Map<String, Object?> toJson() => {
         DbFields2.id: id,
-        DbFields2.shoppingItem: shoppingItem,
+        DbFields2.shoppingItemName: shoppingItemName,
+        DbFields2.isChecked: isChecked,
       };
 
-  static ShoppingList fromJson(Map<String, Object?> json) => ShoppingList(
+  static ShoppingItem fromJson(Map<String, Object?> json) => ShoppingItem(
         id: json[DbFields2.id] as int?,
-        shoppingItem: json[DbFields2.shoppingItem] as String,
+        shoppingItemName: json[DbFields2.shoppingItemName] as String,
+        isChecked: json[DbFields2.isChecked] as int,
       );
 
   @override
   String toString() {
-    return 'ShoppingList(Id: $id, Shopping Item: $shoppingItem)';
+    return 'ShoppingList(Id: $id, Shopping Item: $shoppingItemName, Is Checked: $isChecked)';
   }
 }
 
