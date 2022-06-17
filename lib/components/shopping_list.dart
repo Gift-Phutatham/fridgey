@@ -13,9 +13,6 @@ class ShoppingList extends StatefulWidget {
 }
 
 class _ShoppingListState extends State<ShoppingList> {
-  // List<CheckBoxListTileModel> checkBoxListTileModel =
-  //     CheckBoxListTileModel.getList();
-
   late Future<List<ShoppingItem>> shoppingItems;
 
   @override
@@ -61,8 +58,11 @@ class _ShoppingListState extends State<ShoppingList> {
                           updateShoppingItem(snapshot.data[index], xxx);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (_) => const MainTemplate(myIndex: 1)),
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) =>
+                                  const MainTemplate(myIndex: 1),
+                              transitionDuration: Duration.zero,
+                            ),
                           );
                         });
                       },
