@@ -54,8 +54,8 @@ class _ShoppingListState extends State<ShoppingList> {
                       // ),
                       onChanged: (bool? value) {
                         setState(() {
-                          int xxx = value! ? 1 : 0;
-                          updateShoppingItem(snapshot.data[index], xxx);
+                          int isChecked = value! ? 1 : 0;
+                          updateShoppingItem(snapshot.data[index], isChecked);
                           Navigator.push(
                             context,
                             PageRouteBuilder(
@@ -77,11 +77,11 @@ class _ShoppingListState extends State<ShoppingList> {
         });
   }
 
-  Future updateShoppingItem(ShoppingItem item, int xxx) async {
+  Future updateShoppingItem(ShoppingItem item, int isChecked) async {
     final shoppingItem = ShoppingItem(
       id: item.id,
       shoppingItemName: item.shoppingItemName,
-      isChecked: xxx,
+      isChecked: isChecked,
     );
     await FridgeyDb.instance.updateShoppingList(shoppingItem);
   }
