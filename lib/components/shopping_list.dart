@@ -44,14 +44,6 @@ class _ShoppingListState extends State<ShoppingList> {
                       ),
                       activeColor: kButtonColor1,
                       value: snapshot.data[index].isChecked == 1 ? true : false,
-                      // secondary: SizedBox(
-                      //   height: 50,
-                      //   width: 50,
-                      //   child: Image.asset(
-                      //     checkBoxListTileModel[index].img,
-                      //     fit: BoxFit.cover,
-                      //   ),
-                      // ),
                       onChanged: (bool? value) {
                         setState(() {
                           int isChecked = value! ? 1 : 0;
